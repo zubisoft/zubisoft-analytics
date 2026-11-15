@@ -153,7 +153,7 @@ def head(lang, title, desc, page):
               if lang == "en" else
               f'<a href="{other_local}" hreflang="{other}" lang="{other}" data-set-lang="{other}">{other.upper()}</a><span aria-current="true">{lang.upper()}</span>')
     return f"""<!doctype html>
-<html lang="{lang}">
+<html lang="{lang}" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

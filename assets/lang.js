@@ -5,6 +5,9 @@
  * so this works on the live site and when the files are opened locally.
  * Crawlers and link-preview bots are never redirected, so each language is indexed as published. */
 (function () {
+  // Dark is the default theme (set on <html>); restore "light" only if the visitor chose it.
+  try { if (localStorage.getItem("zs-theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) { /* ignore */ }
+
   var BOT = /bot|crawl|spider|slurp|preview|facebookexternalhit|embedly|whatsapp|telegram/i;
   var SPANISH_TZ = /^(Europe\/Madrid|Atlantic\/Canary|Africa\/Ceuta|Pacific\/(Galapagos|Easter)|America\/(Mexico_City|Cancun|Merida|Monterrey|Matamoros|Chihuahua|Ciudad_Juarez|Ojinaga|Hermosillo|Mazatlan|Bahia_Banderas|Tijuana|Bogota|Lima|Santiago|Punta_Arenas|Argentina\/.+|Buenos_Aires|Caracas|Montevideo|Asuncion|La_Paz|Guayaquil|Guatemala|Costa_Rica|Panama|El_Salvador|Tegucigalpa|Managua|Santo_Domingo|Havana|Puerto_Rico))$/;
   var page = (document.documentElement.lang || "en").slice(0, 2);
