@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="24 22 392 424" role="img" aria-label="Zubisoft">
+  <defs><clipPath id="zc"><rect x="24" y="22" width="392" height="424"/></clipPath></defs>
+  <g clip-path="url(#zc)">
+    <rect x="24" y="22" width="392" height="54" fill="#929CB5"/>
+    <polygon points="24,76 264.9,76 204.7,140 24,140" fill="#20283B"/>
+    <rect x="24" y="382" width="392" height="64" fill="#20283B"/>
+    <polygon points="222.8,324 416,324 416,382 168.2,382" fill="#929CB5"/>
+    <polygon points="315.6,22 411.2,22 12.6,446 -82.9,446" fill="#929CB5"/>
+    <polygon points="411.2,22 506.6,22 108.1,446 12.6,446" fill="#20283B"/>
+  </g>
+</svg>

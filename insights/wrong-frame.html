@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The mistake is cheap. The wrong frame is expensive. · Zubisoft Analytics</title>
+  <meta name="description" content="Some wrong answers died in one message. Others survived for thirteen messages, or two days. The difference was the question I asked.">
+  <meta property="og:title" content="The mistake is cheap. The wrong frame is expensive. · Zubisoft Analytics">
+  <meta property="og:description" content="Some wrong answers died in one message. Others survived for thirteen messages, or two days. The difference was the question I asked.">
+  <meta name="theme-color" content="#20283B">
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="../index.html" aria-label="Zubisoft Analytics home">
+        <svg class="brand__mark" viewBox="24 22 392 424" aria-hidden="true"><defs><clipPath id="zc"><rect x="24" y="22" width="392" height="424"/></clipPath></defs><g clip-path="url(#zc)"><rect class="z-a" x="24" y="22" width="392" height="54"/><polygon class="z-b" points="24,76 264.9,76 204.7,140 24,140"/><rect class="z-b" x="24" y="382" width="392" height="64"/><polygon class="z-a" points="222.8,324 416,324 416,382 168.2,382"/><polygon class="z-a" points="315.6,22 411.2,22 12.6,446 -82.9,446"/><polygon class="z-b" points="411.2,22 506.6,22 108.1,446 12.6,446"/></g></svg>
+        <span class="brand__name">zubisoft<span class="brand__sub">analytics</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#ai">AI on your data</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../insights/index.html" aria-current="page">Insights</a>
+        <a href="../index.html#about">About</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="sun" d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path class="moon" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+        <a class="btn btn--sm" href="../index.html#contact">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article">
+      <header class="article__head wrap">
+        <p class="eyebrow"><a href="index.html">Field notes: AI in analytics</a> · Part 4 of 6</p>
+        <h1>The mistake is cheap. The wrong frame is expensive.</h1>
+        <p class="article__dek">Some wrong answers died in one message. Others survived for thirteen messages, or two days. The difference was the question I asked.</p>
+        <p class="article__meta">Alvaro Zubizarreta · <time datetime="2026-11-15">15 Nov 2026</time> · 3 min read</p>
+      </header>
+      <figure class="article__figure wrap">
+        <div class="chart-frame"><img src="img/05_messages_to_right_answer.jpg" alt="Horizontal bars of messages needed to reach the right answer, per episode: quarterly review blamed the wrong provider 13; payment delay blamed the merchant 9; card tokens wrong mental model 8; fraud-check totals didn’t add up 8; retries counted as approvals 6; network tokens made no difference 4; a reroute that would change nothing 3; merchant profiled from 4% of traffic 3; article draft 80 to 90% recovered 1; two card brands both below the total 1." width="1800" height="1000"></div>
+      </figure>
+      <div class="article__body wrap">
+        <p class="lead">When I counted how many messages each wrong answer took to fix, I expected the hardest analyses to take longest. They didn't. What mattered was whether my first follow-up question attacked the frame or worked inside it.</p>
+
+        <p>At the bottom of the chart are the cheap ones. The "80–90% recovered" claim died to a single word, "Evidence?". The breakdown where two card brands were both below the total died to a single sentence of arithmetic. At the top are the expensive ones: a quarterly review that blamed the wrong provider took 13 messages, and a payment delay blamed on the merchant took 9 messages across two days.</p>
+
+        <h2>Anatomy of a long one: blaming the merchant</h2>
+        <p>A merchant's customers were getting duplicate deposits. The AI spent two days building a case that the merchant was checking payment status too late, and called it "the clearest evidence so far to send to the merchant". Every follow-up I asked, it answered inside that story, adding more detail and more confidence.</p>
+        <p>Then I asked a different kind of question: did this payment show up in <em>our own</em> notification tables, and when? The merchant checked status a fraction of a second after we notified them. Our notification was more than a minute late. It was us.</p>
+        <p>The same pattern appeared elsewhere. A card network's outage was blamed on our own gateway, because the gateway was what was in the data. Webhook errors were put down to "a timing issue on the merchant side" when we were sending webhooks we didn't filter. <strong>The AI explains with whatever is visible</strong>, so the visible party gets the blame.</p>
+
+        <h2>Anatomy of another: the quarterly review</h2>
+        <p>Preparing a partner's quarterly review, the AI pinned declines on the provider that handled the <em>retry</em>, not the one that originally declined. We caught it, and it wrote a lesson about attributing declines by attempt. Later in the same review it made the same mistake on a different decline code. A wrong frame is sticky. Once the agent has a story, each new answer gets reasoned inside it, and the corrections arrive one patch at a time.</p>
+
+        <h2>Questions that break a frame fast</h2>
+        <p>Looking back at the episodes that ended quickly, the winning questions shared one thing: they forced the agent outside its own story.</p>
+        <ul class="qlist">
+          <li><span>"Show me one raw record."</span> A single payment's actual request and response settles in minutes what totals can argue about for days.</li>
+          <li><span>"First attempt or final outcome?"</span> In any system with retries, the answer changes who gets blamed.</li>
+          <li><span>"What does our own side look like?"</span> Trace your logs before blaming a merchant, a provider or an issuer.</li>
+          <li><span>"Is this rate or mix?"</span> Did performance change, or did the traffic?</li>
+          <li><span>"All of them, or the best ones?"</span> Count the whole population before anything becomes "typical".</li>
+          <li><span>"If this were true, what else would be true?"</span> Real outages produce alerts and tickets. Real wins show up in revenue.</li>
+        </ul>
+
+        <h2>What this means for teams</h2>
+        <p>The cost of AI analytics is not the error rate. It is how long a wrong frame survives before someone with context challenges it. That suggests two practical moves. First, put the frame-breaking questions into the agent's own review step, so it asks them before you have to. Second, make sure the person reviewing the output knows the domain well enough to ask them. A reviewer who only checks the arithmetic will sign off on a beautifully argued wrong story.</p>
+
+        <blockquote class="callout">Ask the right question and a wrong answer dies in one message. Ask the wrong one and it lives for days.</blockquote>
+
+        <aside class="data-note">
+          <strong>About the data.</strong> Based on 1,006 messages I typed across 124 sessions with an AI analytics agent (Claude Code connected to a payments data warehouse), 29 Sep – 13 Nov 2026. AI subagents classified every message and I spot-checked the labels. Corrections are a floor: only answers someone checked could be caught. Merchants, providers and business figures are anonymised.
+        </aside>
+        <nav class="pager" aria-label="More in this series"><a class="pager__item" href="confident-precise-wrong.html"><span>← Previous</span>Five AI answers that didn’t survive one question</a><a class="pager__item pager__item--next" href="lessons-dont-stop-mistakes.html"><span>Next →</span>65 lessons later, the mistakes didn’t stop</a></nav>
+      </div>
+    </article>
+  </main>
+
+  <section class="contact">
+    <div class="wrap contact__inner">
+      <h2>Thinking about AI on your own data?</h2>
+      <p>We'll show you the checks, defaults and review loop we run, and where your data needs fixing first.</p>
+      <div class="hero__cta">
+        <a class="btn btn--light" href="mailto:zubisoft@gmail.com?subject=AI%20analytics">zubisoft@gmail.com</a>
+        <a class="btn btn--ghost-light" href="https://www.linkedin.com/in/zubisoft/" target="_blank" rel="noopener">Message on LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <span>© <span id="year">2026</span> Zubisoft Analytics</span>
+      <span>Case details are anonymised. Numbers come from the author’s own AI-assisted work.</span>
+    </div>
+  </footer>
+  <script src="../app.js"></script>
+</body>
+</html>

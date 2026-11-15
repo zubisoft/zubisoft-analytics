@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I read 1,006 of my own AI chats. One in six said “that’s wrong”. · Zubisoft Analytics</title>
+  <meta name="description" content="Everyone is talking about the plumbing of AI analytics. The failures that matter happen somewhere else: in the reasoning.">
+  <meta property="og:title" content="I read 1,006 of my own AI chats. One in six said “that’s wrong”. · Zubisoft Analytics">
+  <meta property="og:description" content="Everyone is talking about the plumbing of AI analytics. The failures that matter happen somewhere else: in the reasoning.">
+  <meta name="theme-color" content="#20283B">
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="../index.html" aria-label="Zubisoft Analytics home">
+        <svg class="brand__mark" viewBox="24 22 392 424" aria-hidden="true"><defs><clipPath id="zc"><rect x="24" y="22" width="392" height="424"/></clipPath></defs><g clip-path="url(#zc)"><rect class="z-a" x="24" y="22" width="392" height="54"/><polygon class="z-b" points="24,76 264.9,76 204.7,140 24,140"/><rect class="z-b" x="24" y="382" width="392" height="64"/><polygon class="z-a" points="222.8,324 416,324 416,382 168.2,382"/><polygon class="z-a" points="315.6,22 411.2,22 12.6,446 -82.9,446"/><polygon class="z-b" points="411.2,22 506.6,22 108.1,446 12.6,446"/></g></svg>
+        <span class="brand__name">zubisoft<span class="brand__sub">analytics</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#ai">AI on your data</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../insights/index.html" aria-current="page">Insights</a>
+        <a href="../index.html#about">About</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="sun" d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path class="moon" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+        <a class="btn btn--sm" href="../index.html#contact">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article">
+      <header class="article__head wrap">
+        <p class="eyebrow"><a href="index.html">Field notes: AI in analytics</a> · Part 1 of 6</p>
+        <h1>I read 1,006 of my own AI chats. One in six said “that’s wrong”.</h1>
+        <p class="article__dek">Everyone is talking about the plumbing of AI analytics. The failures that matter happen somewhere else: in the reasoning.</p>
+        <p class="article__meta">Alvaro Zubizarreta · <time datetime="2026-11-15">15 Nov 2026</time> · 3 min read</p>
+      </header>
+      <figure class="article__figure wrap">
+        <div class="chart-frame"><img src="img/01_one_in_six_messages.jpg" alt="Bar chart of 1,006 messages typed to an AI analyst, by type: 572 follow-ups, 154 new requests, 62 other, 43 process pushback, 43 wrong finding, 41 wrong scope, 33 format or style, 30 domain teaching, 28 approvals. The four correction types total 160, or 16%." width="1800" height="1000"></div>
+      </figure>
+      <div class="article__body wrap">
+        <p class="lead">Since late September I have done most of my day-to-day analytics with an AI agent wired straight into a payments data warehouse. It writes the SQL, runs it, reads the results and drafts the findings. It also keeps transcripts. So I did something slightly masochistic: I went back and read all of them.</p>
+
+        <p>The haul was 124 sessions, 1,006 messages I typed and 4,370 actions the agent took, about 1,500 of them SQL queries. I sorted every one of my messages by what it was doing: asking something new, steering, teaching, approving, or telling the agent it was wrong.</p>
+
+        <h2>The plumbing works</h2>
+        <p>If you have been anywhere near data content this year, you have heard a lot about plumbing: MCP servers, connectors, semantic layers, agents talking to agents, "chat with your warehouse in five minutes". I want to be fair to it, because it delivered. Connecting an AI to a warehouse used to be a project and is now an afternoon. My agent took more than four actions for every message I sent. Only 6.8% of those actions errored, and it recovered from most of them on its own. Queries ran. Joins joined.</p>
+        <p>But a connection tells you nothing about whether the answers are right. The demo always asks something with an obvious answer, like "what was revenue last month?" Nobody needed help with that.</p>
+
+        <h2>The reasoning doesn't, yet</h2>
+        <p>Most of my messages were steering. There were 572 follow-ups and 154 new requests: "now split it by card network", "now only new customers". That is what working with an analyst looks like.</p>
+        <p>But <strong>160 of my messages, one in six, were me correcting it</strong>:</p>
+        <ul>
+          <li><strong>43 wrong findings:</strong> a wrong conclusion, a wrong number or the wrong culprit.</li>
+          <li><strong>41 wrong scope:</strong> a correct answer to a question I hadn't asked. I asked per merchant and got all merchants; I asked about cards and got all payment types.</li>
+          <li><strong>43 process pushbacks:</strong> handing work back ("here is the SQL for you to run") when it had access all along.</li>
+          <li><strong>33 format fixes:</strong> I asked for a CSV and got a beautifully formatted four-tab workbook.</li>
+        </ul>
+        <p>Here is the part that should worry anyone deploying this. Of those 160 corrections, 84 were about the conclusion or the scope, and almost none were about broken SQL. The failures were correct queries answering the wrong question, or the right question read the wrong way.</p>
+        <p>That is a much scarier kind of failure. A broken query throws an error. A wrong conclusion throws a slide into your quarterly business review.</p>
+
+        <h2>Wrong answers look exactly like right ones</h2>
+        <p>The wrong answers came in the same confident prose and with the same precise decimals as the right ones. Nothing in the output flagged them. What caught them was a short question from someone who knew the domain: "Evidence?", "What?", "I can't replicate that." Better tooling had nothing to do with it.</p>
+        <p>The rest of this series looks at those failures up close: <a href="outage-that-never-happened.html">a fake outage</a>, <a href="confident-precise-wrong.html">five confident claims that collapsed</a>, <a href="wrong-frame.html">why some errors survive for days</a>, <a href="lessons-dont-stop-mistakes.html">why writing lessons down didn't stop them</a>, and <a href="what-ai-is-good-for.html">what the AI was genuinely brilliant at</a>.</p>
+
+        <h2>If your team is adopting AI analytics</h2>
+        <ol>
+          <li><strong>Budget for review, not just integration.</strong> The connector takes a day. Spend the next week designing how answers get checked before they leave the building.</li>
+          <li><strong>Measure the correction rate, not the query success rate.</strong> Ask your analysts to tag their corrections for two weeks. That number tells you far more than "the queries ran".</li>
+          <li><strong>Keep a domain expert in the loop</strong> for anything that reaches a customer, a board or a press release.</li>
+        </ol>
+
+        <blockquote class="callout">The plumbing is solved, or solved enough. What comes out of the pipe is a brilliant, tireless, very junior analyst with a perfect poker face.</blockquote>
+
+        <aside class="data-note">
+          <strong>About the data.</strong> Based on 1,006 messages I typed across 124 sessions with an AI analytics agent (Claude Code connected to a payments data warehouse), 29 Sep – 13 Nov 2026. AI subagents classified every message and I spot-checked the labels. Corrections are a floor: only answers someone checked could be caught. Merchants, providers and business figures are anonymised.
+        </aside>
+        <nav class="pager" aria-label="More in this series"><span></span><a class="pager__item pager__item--next" href="outage-that-never-happened.html"><span>Next →</span>The outage that never happened</a></nav>
+      </div>
+    </article>
+  </main>
+
+  <section class="contact">
+    <div class="wrap contact__inner">
+      <h2>Thinking about AI on your own data?</h2>
+      <p>We'll show you the checks, defaults and review loop we run, and where your data needs fixing first.</p>
+      <div class="hero__cta">
+        <a class="btn btn--light" href="mailto:zubisoft@gmail.com?subject=AI%20analytics">zubisoft@gmail.com</a>
+        <a class="btn btn--ghost-light" href="https://www.linkedin.com/in/zubisoft/" target="_blank" rel="noopener">Message on LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <span>© <span id="year">2026</span> Zubisoft Analytics</span>
+      <span>Case details are anonymised. Numbers come from the author’s own AI-assisted work.</span>
+    </div>
+  </footer>
+  <script src="../app.js"></script>
+</body>
+</html>

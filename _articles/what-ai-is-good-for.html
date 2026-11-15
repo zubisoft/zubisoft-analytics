@@ -1,0 +1,48 @@
+        <p class="lead">Of the 85 working sessions in my logs (those with three or more messages), 26 went right without a single correction. The other 59 needed at least one, and 11 needed five or more. That sounds damning. It isn't, once you look at the other side of the ledger.</p>
+
+        <h2>Where it earned its keep</h2>
+        <p>Some of the best finds of my year came from the AI. Almost none of them came from the question I had actually asked.</p>
+        <ul>
+          <li><strong>A stuck warehouse load.</strong> While answering a conversion question, it noticed that "new customers" read zero across the whole book for three days. A load had stalled. We fixed it during the analysis and put the missing rows back.</li>
+          <li><strong>Money nobody was billing.</strong> Routine billing checks turned up a large block of transactions that had never been invoiced, plus duplicate billing rows that were then cleaned up.</li>
+          <li><strong>A dead backup route.</strong> A failover route was quietly accepting almost nothing: tens of thousands of attempts in one day, a couple of dozen approved.</li>
+          <li><strong>A card-testing attack.</strong> A colleague's AI log search spotted it, an engineer validated it, and the merchant's fraud team acted on it.</li>
+          <li><strong>Fact-checking the humans.</strong> A human-written draft claimed "over 20%" of failed payments were saved. The AI recounted, the real figure was about half that, and it was fixed before publication.</li>
+        </ul>
+        <p>These have one thing in common. They were found while the agent was doing something else, because it checked a hundred cuts of the data that I would never have had time to check. That is the superpower: breadth, speed, and never getting bored.</p>
+
+        <h2>The split of work that holds up</h2>
+        <div class="split">
+          <div>
+            <h3>The AI brings</h3>
+            <ul>
+              <li>Breadth: every segment, every day, every provider</li>
+              <li>Speed from question to first draft</li>
+              <li>Tireless reconciliation and re-checking</li>
+              <li>Clear, structured write-ups</li>
+            </ul>
+          </div>
+          <div>
+            <h3>The person brings</h3>
+            <ul>
+              <li>Definitions: what "success" or "new customer" really means here</li>
+              <li>Business context and history</li>
+              <li>A sense of roughly what the answer should be</li>
+              <li>The final call on anything that leaves the building</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Operating rules we now use</h2>
+        <ol>
+          <li><strong>Treat AI output as directional.</strong> Validate any exact number before it goes to a customer, a board or the press.</li>
+          <li><strong>Ask narrow questions.</strong> Narrow questions come back sharp. Broad, many-way segmentations add a lot of noise.</li>
+          <li><strong>Make it label its claims.</strong> One engineer's prompt tags every statement as sourced or inferred, which makes review much faster.</li>
+          <li><strong>Reconcile every number against a second source</strong> before you believe it.</li>
+          <li><strong>Look at one raw record</strong> before you believe a story.</li>
+          <li><strong>Never let "typically" out of the building</strong> without counting all of them.</li>
+        </ol>
+
+        <p>The 26 clean sessions weren't luck. They were mostly narrow, well-defined questions on data the agent's defaults already covered. The 59 messier ones are where the value was too: the agent did the legwork, and a person made the judgement.</p>
+
+        <blockquote class="callout">The queries are the easy part now. Asking "does this make sense?" is the job. You are the test suite.</blockquote>

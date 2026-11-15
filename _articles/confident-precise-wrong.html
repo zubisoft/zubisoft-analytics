@@ -1,0 +1,42 @@
+        <p class="lead">Every one of these answers was specific, persuasive and one step from being shipped: into an article, a quarterly review or an engineering fix. Every one fell to a short question from someone who knew the domain. None was a SQL error. Each was a judgement call that an experienced analyst makes without thinking.</p>
+
+        <h2>1. "We typically recovered 80–90%"</h2>
+        <p><strong>The claim.</strong> We were drafting an article about what happens when a payment provider goes down. The AI wrote a lovely sentence: when a single provider failed, we "typically recovered 80–90% of affected payments within minutes". It was quotable and shareable.</p>
+        <p><strong>The reality.</strong> It had taken the three best outages and called them typical. Across all of them, most recovered nothing and the total was under 2%. And it wasn't "within minutes": failover happens inside the same payment request, in seconds.</p>
+        <p><strong>The question that killed it:</strong> "Evidence?"</p>
+        <p class="aside-note">In fairness, in the same stretch of work the AI fact-checked a human-written draft that claimed "over 20%" of failed payments were saved. The real figure was about half that. Humans overclaim too. The AI just does it in flawless prose.</p>
+
+        <h2>2. 96 payments hit by a bug</h2>
+        <p><strong>The claim.</strong> A colleague's AI log-search tool reported that a 3-D Secure bug had hit 96 payments, and an engineering fix was being rushed out.</p>
+        <p><strong>The reality.</strong> My data agent counted again, and one look at the raw API response confirmed it: one payment in seven days.</p>
+        <p><strong>The question that killed it:</strong> "Show me one."</p>
+
+        <h2>3. A merchant at 0% all weekend</h2>
+        <p><strong>The claim.</strong> A major merchant was "completely broken", with nothing getting through and money lost every hour.</p>
+        <p><strong>The reality.</strong> About 91% success, a normal weekend. A success column was wrong and the AI trusted its name. <a href="outage-that-never-happened.html">The full story is here.</a></p>
+        <p><strong>What caught it:</strong> reconciling against a second data source.</p>
+
+        <h2>4. A provider gap 2.4× too big</h2>
+        <p><strong>The claim.</strong> Most of one wallet's payments were failing at provider A. Route them to provider B, it said, and win a large number of approvals every week. It was very persuasive.</p>
+        <p><strong>The reality.</strong> Those payments were already retried on provider B automatically, and fewer than 3% got through on the second try. The agent was reading the final outcome rather than the first attempt. That inflated provider A's gap by 2.4×, and the "fix" was something we were already doing.</p>
+        <p><strong>The question that killed it:</strong> "I can't replicate that. Are you using the initial provider?"</p>
+
+        <h2>5. A routing choice costing 4.3 points of conversion</h2>
+        <p><strong>The claim.</strong> Sending a merchant's traffic to provider B instead of provider A was costing 4.3 percentage points of conversion.</p>
+        <p><strong>The reality.</strong> Provider B was getting more of a card network that approves less often everywhere. Like for like, the two providers were 0.1 points apart, a dead heat. That is mix, not rate. <a href="../index.html#demo">Try the mix-vs-rate demo on our homepage</a> to see how easily it happens.</p>
+        <p><strong>The question that killed it:</strong> "Same card network?"</p>
+
+        <h2>Bonus: two numbers that can't both be true</h2>
+        <p>The overall acceptance rate for a merchant was 91%. The AI handed me a breakdown in which Visa was below 91% and Mastercard was also below 91%. My reply: "if acceptance is 91%, Visa and Mastercard can't both be below 91%." Its reply: "My mistake." A first-year analyst runs that check in their sleep. The AI skipped it entirely: rows from a different request type had crept into the breakdown.</p>
+
+        <h2>The five traps underneath</h2>
+        <p>Line up every wrong finding and almost all of them fall into a handful of traps:</p>
+        <ol>
+          <li><strong>The best case becomes "typically".</strong> Count the whole population before generalising.</li>
+          <li><strong>A plausible story replaces a check.</strong> Look at one raw record before explaining a mechanism.</li>
+          <li><strong>The column name is believed.</strong> Read how a field is built, not what it is called.</li>
+          <li><strong>The final outcome stands in for the first attempt.</strong> Attribute every decline to the attempt that returned it.</li>
+          <li><strong>Mix is mistaken for rate.</strong> Compare like for like, with volumes, before saying anything got better or worse.</li>
+        </ol>
+
+        <blockquote class="callout">None of these needed a better model. Each needed one question from someone who knew roughly what the answer should be.</blockquote>

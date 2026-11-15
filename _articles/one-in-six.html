@@ -1,0 +1,32 @@
+        <p class="lead">Since late September I have done most of my day-to-day analytics with an AI agent wired straight into a payments data warehouse. It writes the SQL, runs it, reads the results and drafts the findings. It also keeps transcripts. So I did something slightly masochistic: I went back and read all of them.</p>
+
+        <p>The haul was 124 sessions, 1,006 messages I typed and 4,370 actions the agent took, about 1,500 of them SQL queries. I sorted every one of my messages by what it was doing: asking something new, steering, teaching, approving, or telling the agent it was wrong.</p>
+
+        <h2>The plumbing works</h2>
+        <p>If you have been anywhere near data content this year, you have heard a lot about plumbing: MCP servers, connectors, semantic layers, agents talking to agents, "chat with your warehouse in five minutes". I want to be fair to it, because it delivered. Connecting an AI to a warehouse used to be a project and is now an afternoon. My agent took more than four actions for every message I sent. Only 6.8% of those actions errored, and it recovered from most of them on its own. Queries ran. Joins joined.</p>
+        <p>But a connection tells you nothing about whether the answers are right. The demo always asks something with an obvious answer, like "what was revenue last month?" Nobody needed help with that.</p>
+
+        <h2>The reasoning doesn't, yet</h2>
+        <p>Most of my messages were steering. There were 572 follow-ups and 154 new requests: "now split it by card network", "now only new customers". That is what working with an analyst looks like.</p>
+        <p>But <strong>160 of my messages, one in six, were me correcting it</strong>:</p>
+        <ul>
+          <li><strong>43 wrong findings:</strong> a wrong conclusion, a wrong number or the wrong culprit.</li>
+          <li><strong>41 wrong scope:</strong> a correct answer to a question I hadn't asked. I asked per merchant and got all merchants; I asked about cards and got all payment types.</li>
+          <li><strong>43 process pushbacks:</strong> handing work back ("here is the SQL for you to run") when it had access all along.</li>
+          <li><strong>33 format fixes:</strong> I asked for a CSV and got a beautifully formatted four-tab workbook.</li>
+        </ul>
+        <p>Here is the part that should worry anyone deploying this. Of those 160 corrections, 84 were about the conclusion or the scope, and almost none were about broken SQL. The failures were correct queries answering the wrong question, or the right question read the wrong way.</p>
+        <p>That is a much scarier kind of failure. A broken query throws an error. A wrong conclusion throws a slide into your quarterly business review.</p>
+
+        <h2>Wrong answers look exactly like right ones</h2>
+        <p>The wrong answers came in the same confident prose and with the same precise decimals as the right ones. Nothing in the output flagged them. What caught them was a short question from someone who knew the domain: "Evidence?", "What?", "I can't replicate that." Better tooling had nothing to do with it.</p>
+        <p>The rest of this series looks at those failures up close: <a href="outage-that-never-happened.html">a fake outage</a>, <a href="confident-precise-wrong.html">five confident claims that collapsed</a>, <a href="wrong-frame.html">why some errors survive for days</a>, <a href="lessons-dont-stop-mistakes.html">why writing lessons down didn't stop them</a>, and <a href="what-ai-is-good-for.html">what the AI was genuinely brilliant at</a>.</p>
+
+        <h2>If your team is adopting AI analytics</h2>
+        <ol>
+          <li><strong>Budget for review, not just integration.</strong> The connector takes a day. Spend the next week designing how answers get checked before they leave the building.</li>
+          <li><strong>Measure the correction rate, not the query success rate.</strong> Ask your analysts to tag their corrections for two weeks. That number tells you far more than "the queries ran".</li>
+          <li><strong>Keep a domain expert in the loop</strong> for anything that reaches a customer, a board or a press release.</li>
+        </ol>
+
+        <blockquote class="callout">The plumbing is solved, or solved enough. What comes out of the pipe is a brilliant, tireless, very junior analyst with a perfect poker face.</blockquote>

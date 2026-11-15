@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zubisoft Analytics</title>
+  <meta name="description" content="Hands-on analytics, data engineering and AI agents for payments, fintech and high-volume businesses, with the checks that keep AI answers honest.">
+  <meta property="og:title" content="Zubisoft Analytics">
+  <meta property="og:description" content="Find what the headline number is hiding.">
+  <meta name="theme-color" content="#20283B">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#top" aria-label="Zubisoft Analytics home">
+        <svg class="brand__mark" viewBox="24 22 392 424" aria-hidden="true"><defs><clipPath id="zc"><rect x="24" y="22" width="392" height="424"/></clipPath></defs><g clip-path="url(#zc)"><rect class="z-a" x="24" y="22" width="392" height="54"/><polygon class="z-b" points="24,76 264.9,76 204.7,140 24,140"/><rect class="z-b" x="24" y="382" width="392" height="64"/><polygon class="z-a" points="222.8,324 416,324 416,382 168.2,382"/><polygon class="z-a" points="315.6,22 411.2,22 12.6,446 -82.9,446"/><polygon class="z-b" points="411.2,22 506.6,22 108.1,446 12.6,446"/></g></svg>
+        <span class="brand__name">zubisoft<span class="brand__sub">analytics</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#ai">AI on your data</a>
+        <a href="#work">Work</a>
+        <a href="insights/index.html">Insights</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="sun" d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path class="moon" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+        <a class="btn btn--sm" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Analytics · Data engineering · AI agents on real data</p>
+          <h1>Find what the headline number is <span class="grad">hiding</span>.</h1>
+          <p class="lede">Zubisoft is a small, hands-on analytics practice for payments, fintech and other high-volume businesses. We fix the data foundations, take apart the numbers that matter, and put AI agents to work on them, with the checks that stop them inventing a story.</p>
+          <div class="hero__cta">
+            <a class="btn" href="#contact">Bring us a number that doesn't add up</a>
+            <a class="btn btn--ghost" href="#work">See the work →</a>
+          </div>
+        </div>
+
+        <figure class="hero__viz card" id="story" aria-labelledby="story-title">
+          <div class="viz-head">
+            <span class="viz-title" id="story-title">Weekly approval rate, 12 weeks</span>
+            <span class="viz-tag">synthetic data</span>
+          </div>
+          <div class="story-tabs" role="tablist" aria-label="Analysis steps">
+            <button type="button" role="tab" id="st-0" aria-selected="true" aria-controls="story-chart" data-step="0"><span>1</span>Headline</button>
+            <button type="button" role="tab" id="st-1" aria-selected="false" aria-controls="story-chart" data-step="1" tabindex="-1"><span>2</span>By segment</button>
+            <button type="button" role="tab" id="st-2" aria-selected="false" aria-controls="story-chart" data-step="2" tabindex="-1"><span>3</span>Mix vs rate</button>
+            <span class="story-progress" aria-hidden="true"><i></i></span>
+          </div>
+          <div class="story-chart" id="story-chart" role="tabpanel" aria-labelledby="st-0"></div>
+          <p class="story-note" id="story-note" aria-live="polite"></p>
+        </figure>
+      </div>
+
+      <div class="wrap">
+        <ul class="proof" aria-label="At a glance">
+          <li><b>2024 → today</b><span>built a payments data function, from the first database login to the warehouse, dashboards, alerting and AI</span></li>
+          <li><b>Tens of millions</b><span>of payments a month modelled, reconciled and monitored</span></li>
+          <li><b>UK · EU · US · AU</b><span>merchants across gaming, retail and travel, on many payment providers</span></li>
+          <li><b>Board to on-call</b><span>from monthly company KPI briefings to live incident calls</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Services</p>
+          <h2>What we actually do.</h2>
+          <p class="section__lede">Four kinds of work, usually in this order. Foundations first, because no analysis or AI agent survives two dashboards that disagree.</p>
+        </header>
+
+        <div class="services">
+          <article class="service card">
+            <div class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-7"/></svg></div>
+            <h3>Explain a move</h3>
+            <p>Approval rate dropped 0.6 points on Tuesday. Was it a provider, an issuer, a card network, or just more first-time customers? You get the decomposition and the raw payments behind it.</p>
+            <ul>
+              <li>Mix-vs-rate decomposition</li>
+              <li>Decline funnels by response code</li>
+              <li>First-attempt vs final-outcome attribution</li>
+              <li>Provider, network and peer benchmarks</li>
+            </ul>
+          </article>
+          <article class="service card">
+            <div class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+            <h3>Fix the foundations</h3>
+            <p>If finance, product and the board each quote a different number, the problem is in the tables, not the slides. We fix the tables.</p>
+            <ul>
+              <li>Zero-ETL and CDC replication</li>
+              <li>Airflow orchestration on Kubernetes</li>
+              <li>dbt models with tests and docs</li>
+              <li>Raw JSON events into a clean schema</li>
+            </ul>
+          </article>
+          <article class="service card">
+            <div class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="m7 13 3-3 2 2 4-4"/></svg></div>
+            <h3>Watch it live</h3>
+            <p>Dashboards and alerts tuned to your own traffic, so a real incident stands out from normal overnight noise.</p>
+            <ul>
+              <li>Near-live views by provider, method and rail</li>
+              <li>Outage detection and failover impact</li>
+              <li>Monthly KPI and partner QBR packs</li>
+              <li>Customer-facing embedded analytics</li>
+            </ul>
+          </article>
+          <article class="service card">
+            <div class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
+            <h3>Put AI to work, safely</h3>
+            <p>Agents that write and run the SQL inside guardrails: read-only access, shared metric definitions, written playbooks and a named person who signs off.</p>
+            <ul>
+              <li>Plain-English questions, logged SQL</li>
+              <li>Definitions and lessons kept as code</li>
+              <li>Automatic reconciliation checks</li>
+              <li>Findings with the evidence attached</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI CONCERNS -->
+    <section class="section section--alt" id="ai">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">AI on your data</p>
+          <h2>The worries are reasonable. Here's what we do about each one.</h2>
+          <p class="section__lede">We ran an AI analyst on real payments data for months and logged every time it was wrong. These answers come from that log, not from a vendor deck.</p>
+        </header>
+
+        <div class="concerns">
+          <article class="concern">
+            <h3>"It will make up numbers."</h3>
+            <p>It rarely gets the SQL wrong. It does misread what the SQL returns: in our logs, 1 in 6 messages was a correction. So every headline number is reconciled against a second source, and every claim links back to the query that produced it.</p>
+          </article>
+          <article class="concern">
+            <h3>"Our data isn't clean enough for AI."</h3>
+            <p>Often true, and fixable. Freshness checks, row-count reconciliation and metric definitions in code come first. Then the agent works on numbers that already agree with each other.</p>
+          </article>
+          <article class="concern">
+            <h3>"Who's accountable when it's wrong?"</h3>
+            <p>A named person. The agent does the legwork and drafts the write-up. It never publishes. Anything that reaches a customer, a board or the press is signed off by someone who knows roughly what the answer should be.</p>
+          </article>
+          <article class="concern">
+            <h3>"Governance, privacy, the EU AI Act."</h3>
+            <p>Agents get read-only roles, and credentials stay out of prompts. Personal data is masked or aggregated before an agent sees it, and every query is logged. You get an audit trail you can actually hand to someone.</p>
+          </article>
+          <article class="concern">
+            <h3>"People already paste data into chatbots."</h3>
+            <p>Then give them a sanctioned route that beats the shortcut: an agent on the real warehouse with your definitions built in, instead of a spreadsheet export in a personal account.</p>
+          </article>
+          <article class="concern">
+            <h3>"Chat-with-your-data never survives real questions."</h3>
+            <p>Agreed. So we start with your hardest recurring question and track how often answers need correcting. We widen the scope only once that number is low.</p>
+          </article>
+        </div>
+        <p class="concerns__more"><a class="link" href="insights/index.html">Read the field notes behind this →</a></p>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Selected work</p>
+          <h2>From one database login to a full data platform.</h2>
+          <p class="section__lede">Our longest engagement so far is with a payments orchestration platform that serves merchants in the UK, Europe, the US and Australia. We joined to answer a few questions. Two years on, we look after its warehouse, reporting, alerting and analytics. Client names and figures stay confidential.</p>
+        </header>
+
+        <ol class="timeline" aria-label="Engagement timeline">
+          <li><span class="timeline__when">Aug 2024</span><b>First access</b><span>Read access to the production databases, and a list of questions nobody could answer yet.</span></li>
+          <li><span class="timeline__when">2025</span><b>A warehouse of our own</b><span>A third-party sync replaced by our own Redshift data flow. Datamarts, a conversion cube and documentation.</span></li>
+          <li><span class="timeline__when">2025</span><b>Visibility</b><span>Live performance, issuer-conversion and KPI dashboards, with alerts in Slack instead of in complaints.</span></li>
+          <li><span class="timeline__when">2025</span><b>Money</b><span>Monthly billing and revenue-share validation, reconciled per merchant and product.</span></li>
+          <li><span class="timeline__when">2026</span><b>Resilience</b><span>A provider kill-switch process, rebuilt conversion alerting, and failover impact measured rather than assumed.</span></li>
+          <li><span class="timeline__when">2026</span><b>Scale</b><span>Warehouse migration, Airflow on Kubernetes, and raw provider and event data normalised. A US region went live.</span></li>
+          <li><span class="timeline__when">2026</span><b>AI on top</b><span>An AI analyst on the warehouse, held to written rules and human review.</span></li>
+        </ol>
+
+        <h3 class="cases__title">Projects along the way</h3>
+        <div class="cases">
+          <article class="case card">
+            <p class="case__tag">Payments · Diagnostics</p>
+            <h3>The drop that wasn't</h3>
+            <p class="case__problem">Headline approval fell, and a provider was about to take the blame.</p>
+            <p>Split into mix and rate, every segment had held steady or improved. A surge of first-time customers, who approve less often everywhere, had diluted the blend.</p>
+            <p class="case__outcome"><span aria-hidden="true">→</span> A costly re-route was avoided. The effort went into new-customer onboarding instead.</p>
+          </article>
+
+          <article class="case card">
+            <p class="case__tag">Orchestration · Monitoring</p>
+            <h3>Outages caught in minutes, not mornings</h3>
+            <p class="case__problem">Provider incidents were surfacing through customer complaints, hours late.</p>
+            <p>We built near-live views by provider, payment method and rail, with alerting that tells a real incident apart from normal overnight wobble.</p>
+            <p class="case__outcome"><span aria-hidden="true">→</span> Incidents are flagged as they happen, and failover's real recovery rate is measured rather than assumed.</p>
+          </article>
+
+          <article class="case card">
+            <p class="case__tag">Platform · Data engineering</p>
+            <h3>From one giant table to a schema people can read</h3>
+            <p class="case__problem">A single monolithic table, slow refreshes, and a new region to launch.</p>
+            <p>We moved to zero-ETL replication, ran Airflow on Kubernetes, normalised raw JSON events into tables that mirror the product, and documented it all in dbt.</p>
+            <p class="case__outcome"><span aria-hidden="true">→</span> Fresher data, faster queries, and a US region live on the same patterns.</p>
+          </article>
+
+          <article class="case card">
+            <p class="case__tag">Fintech · Strategy</p>
+            <h3>Where tokenisation actually pays</h3>
+            <p class="case__problem">"Should we roll out network tokens, and to whom?"</p>
+            <p>We matched customers like for like and controlled for confounds. The uplift sits in repeat traffic, and creating the token too close to the first payment can quietly erase it.</p>
+            <p class="case__outcome"><span aria-hidden="true">→</span> A rollout plan with evidence a partner could check, presented in QBRs.</p>
+          </article>
+
+          <article class="case card">
+            <p class="case__tag">AI · Analytics productivity</p>
+            <h3>An AI analyst with a rulebook</h3>
+            <p class="case__problem">Ad-hoc questions were queueing behind a small data team.</p>
+            <p>An agent now turns a question into SQL and runs a fixed method: volume continuity, segmentation, confounds, decline funnel and peers. About 65 written rules, each from a real mistake, shape every query.</p>
+            <p class="case__outcome"><span aria-hidden="true">→</span> First drafts in minutes rather than days, with a person still signing off.</p>
+          </article>
+
+          <article class="case card">
+            <p class="case__tag">Leadership · Finance</p>
+            <h3>One number, everywhere</h3>
+            <p class="case__problem">The board deck, the sales deck and the invoice didn't agree.</p>
+            <p>We set up monthly KPI briefings from one source, partner drill-downs, and billing and revenue-share checks that caught transactions nobody had invoiced.</p>
+            <p class="case__outcome"><span aria-hidden="true">→</span> The same figure in every room, and billing gaps closed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHOD + DEMO -->
+    <section class="section section--alt" id="method">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Method</p>
+          <h2>The checklist every answer goes through.</h2>
+          <p class="section__lede">Most wrong answers in analytics, human or AI, come from a skipped check, not from bad maths. These seven steps run on every engagement, and our agents run them too.</p>
+        </header>
+
+        <ol class="steps">
+          <li><b>Is the data whole?</b><span>Freshness, partial days, time zones and silent load failures are checked first.</span></li>
+          <li><b>Segment before concluding</b><span>By date, product, method, cohort, and new vs returning.</span></li>
+          <li><b>Hunt the confounds</b><span>Tagging changes, broken lookups and definitions that drift mid-window.</span></li>
+          <li><b>Split mix from rate</b><span>Did performance change, or did the traffic?</span></li>
+          <li><b>Walk the funnel</b><span>Which attempt, which provider and which response code?</span></li>
+          <li><b>Benchmark against peers</b><span>Is it you, or the whole market?</span></li>
+          <li><b>Lead with the answer</b><span>The "so what" first, then the evidence, then the caveats.</span></li>
+        </ol>
+
+        <div class="demo card" id="demo">
+          <div class="demo__intro">
+            <p class="eyebrow">Try it · step 4</p>
+            <h3>Same performance, different traffic</h3>
+            <p>Two customer groups approve at different rates. Change this period's traffic mix and each group's performance, then watch the headline split into <span class="key key--mix">mix</span> and <span class="key key--rate">rate</span>.</p>
+
+            <div class="controls">
+              <label class="ctl">
+                <span class="ctl__row"><span>New-customer share this period</span><output id="o-share">35%</output></span>
+                <input type="range" id="i-share" min="5" max="70" step="1" value="35">
+                <span class="ctl__hint">Last period: 20%</span>
+              </label>
+              <label class="ctl">
+                <span class="ctl__row"><span>New-customer approval change</span><output id="o-new">+1.0 pp</output></span>
+                <input type="range" id="i-new" min="-8" max="8" step="0.5" value="1">
+                <span class="ctl__hint">Last period: 78.0%</span>
+              </label>
+              <label class="ctl">
+                <span class="ctl__row"><span>Returning-customer approval change</span><output id="o-rep">+0.5 pp</output></span>
+                <input type="range" id="i-rep" min="-5" max="3" step="0.5" value="0.5">
+                <span class="ctl__hint">Last period: 95.0%</span>
+              </label>
+            </div>
+            <button class="btn btn--ghost btn--sm" type="button" id="demo-reset">Reset example</button>
+          </div>
+
+          <div class="demo__out">
+            <div class="kpi">
+              <div>
+                <span class="kpi__label">Headline approval</span>
+                <span class="kpi__value" id="k-head">89.7%</span>
+              </div>
+              <span class="kpi__delta" id="k-delta">−1.9 pp</span>
+            </div>
+            <div class="waterfall" id="waterfall" role="img" aria-describedby="wf-desc"></div>
+            <p class="verdict" id="verdict" aria-live="polite"></p>
+            <details class="table-view">
+              <summary>Show the numbers</summary>
+              <table>
+                <thead><tr><th scope="col">Segment</th><th scope="col">Share (last → now)</th><th scope="col">Approval (last → now)</th></tr></thead>
+                <tbody id="wf-table"></tbody>
+              </table>
+            </details>
+            <p class="sr-only" id="wf-desc">Bar chart of the change in approval rate, in percentage points, split into a mix effect and a rate effect that add up to the net change.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="section" id="stack">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Toolkit</p>
+          <h2>We work inside your stack.</h2>
+          <p class="section__lede">These are the tools we know best, not a shopping list. We'd rather make what you already own trustworthy.</p>
+        </header>
+        <div class="stack">
+          <div><h3>Analysis</h3><ul class="chips"><li>SQL</li><li>Python</li><li>pandas</li><li>Statistics &amp; experimentation</li><li>Jupyter</li></ul></div>
+          <div><h3>Platform</h3><ul class="chips"><li>AWS</li><li>Redshift</li><li>Zero-ETL / CDC</li><li>Airflow</li><li>dbt</li><li>Kubernetes (EKS)</li><li>OpenSearch</li><li>S3 data lake</li></ul></div>
+          <div><h3>Insight</h3><ul class="chips"><li>Tableau</li><li>Embedded dashboards</li><li>Alerting &amp; on-call</li><li>Confluence &amp; Slack reporting</li></ul></div>
+          <div><h3>AI</h3><ul class="chips"><li>Claude Code &amp; agents</li><li>Text-to-SQL with guardrails</li><li>Agent skills &amp; playbooks</li><li>Review subagents</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--alt" id="about">
+      <div class="wrap about">
+        <div class="about__copy">
+          <p class="eyebrow">About</p>
+          <h2>Who you'd be working with.</h2>
+          <p>Zubisoft Analytics is <strong>Alvaro Zubizarreta</strong>. I build the pipelines, write the SQL, run the AI agents and present the results to executives and partners, often in the same week.</p>
+          <p>Most of my work is in payments: authorisation, declines, 3-D Secure, tokenisation, routing and failover. A 0.3-point move in approval rate is real money there, so "roughly right" isn't good enough. The same habits carry over to any business that runs on high-volume event data.</p>
+          <p>You talk to the person writing the queries.</p>
+          <a class="link" href="https://www.linkedin.com/in/zubisoft/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+        <div class="engage">
+          <article class="engage__item card">
+            <h3>Diagnostic sprint · 2–3 weeks</h3>
+            <p>One question that keeps coming back: why conversion dipped, which provider is really worse, where tokens pay. You get the answer, the evidence and the SQL.</p>
+          </article>
+          <article class="engage__item card">
+            <h3>Fractional data lead</h3>
+            <p>Part-time ownership of reporting, the warehouse and the data roadmap while you hire or scale.</p>
+          </article>
+          <article class="engage__item card">
+            <h3>AI analyst setup</h3>
+            <p>An agent on your warehouse with your definitions, playbooks and checks. It's handed over with its correction log, so you can see how it's really doing.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIGHTS:START (generated by build_insights.py) -->
+    <section class="section section--alt" id="insights">
+      <div class="wrap">
+        <header class="section__head section__head--row">
+          <div>
+            <p class="eyebrow">Insights</p>
+            <h2>Field notes: AI in analytics</h2>
+            <p class="section__lede">I read 1,006 of my own conversations with an AI analyst. Here is what broke, what worked and what we now do differently.</p>
+          </div>
+          <a class="btn btn--ghost" href="insights/index.html">All 6 notes →</a>
+        </header>
+        <div class="insights-grid">
+<a class="insight-card card" href="insights/one-in-six.html">
+  <span class="insight-card__img"><img src="insights/img/01_one_in_six_messages.jpg" alt="" loading="lazy" width="1800" height="1000"></span>
+  <span class="insight-card__body">
+    <span class="insight-card__meta">Part 1 · 3 min read</span>
+    <h3 class="insight-card__title">I read 1,006 of my own AI chats. One in six said “that’s wrong”.</h3>
+    <span class="insight-card__dek">Everyone is talking about the plumbing of AI analytics. The failures that matter happen somewhere else: in the reasoning.</span>
+  </span>
+</a>
+<a class="insight-card card" href="insights/outage-that-never-happened.html">
+  <span class="insight-card__img"><img src="insights/img/03_fake_outage.jpg" alt="" loading="lazy" width="1800" height="1000"></span>
+  <span class="insight-card__body">
+    <span class="insight-card__meta">Part 2 · 3 min read</span>
+    <h3 class="insight-card__title">The outage that never happened</h3>
+    <span class="insight-card__dek">My AI agent declared a major merchant “completely broken”. Every payment had gone through. One column name was lying.</span>
+  </span>
+</a>
+<a class="insight-card card" href="insights/confident-precise-wrong.html">
+  <span class="insight-card__img"><img src="insights/img/02_claim_vs_reality.jpg" alt="" loading="lazy" width="1800" height="1000"></span>
+  <span class="insight-card__body">
+    <span class="insight-card__meta">Part 3 · 3 min read</span>
+    <h3 class="insight-card__title">Confident, precise… and wrong: five AI answers that didn’t survive one question</h3>
+    <span class="insight-card__dek">Each one was specific, persuasive and ready to ship. Each one fell to a short question from someone who knew the domain.</span>
+  </span>
+</a>
+        </div>
+      </div>
+    </section>
+    <!-- INSIGHTS:END -->
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="wrap contact__inner">
+        <h2>Have a number that doesn't add up?</h2>
+        <p>Send us the chart. We'll tell you what we'd check first.</p>
+        <div class="hero__cta">
+          <a class="btn btn--light" href="mailto:zubisoft@gmail.com?subject=A%20number%20that%20doesn%27t%20add%20up">zubisoft@gmail.com</a>
+          <a class="btn btn--ghost-light" href="https://www.linkedin.com/in/zubisoft/" target="_blank" rel="noopener">Message on LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <span>© <span id="year">2026</span> Zubisoft Analytics</span>
+      <span>Case studies are anonymised. The hero and demo charts use synthetic data.</span>
+    </div>
+  </footer>
+
+  <div class="tip" id="tip" role="tooltip" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

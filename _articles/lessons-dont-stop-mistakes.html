@@ -1,0 +1,26 @@
+        <p class="lead">Every time my AI analyst got something wrong, I made it write a lesson: what went wrong, and the rule that prevents it next time. By November the lessons files held about 65 rules. I expected the correction rate to fall. It didn't.</p>
+
+        <p>Over the five full weeks, usage grew 2.6×, from 109 messages a week to 284. The share of those messages correcting the AI ran 14%, 11%, 14%, 19% and 18%. It was flat at best, and highest in the two busiest weeks.</p>
+        <p>One caveat matters. The questions got harder over the same weeks, with partner quarterly reviews, live incidents and claims for marketing. So this is not a clean measure of whether the AI improved. But it is a clear signal that writing lessons down is not, by itself, a learning curve.</p>
+
+        <h2>Why lessons plateau</h2>
+        <ol>
+          <li><strong>Lessons stop repeats, not new mistakes.</strong> Known traps did stop recurring. But every new kind of question met traps nobody had written down yet, and harder questions have more of them.</li>
+          <li><strong>Lessons get skimmed.</strong> Twice, the agent opened the lessons file, read only the first 50 lines, and missed the exact rule it was about to break. One formatting rule was missed three times.</li>
+          <li><strong>Advice loses to the moment.</strong> In one review, it logged a lesson to attribute declines by attempt, then repeated the original mistake on a different decline code later in the same review.</li>
+          <li><strong>Reviews help but don't prove anything.</strong> A sceptical review pass caught a lot. One wrong attribution still survived two review rounds.</li>
+        </ol>
+
+        <h2>What worked better than prose</h2>
+        <ul>
+          <li><strong>Turn lessons into defaults.</strong> "Don't trust the success flag" is advice. A shared definition of success that every query starts from is a default. Defaults don't depend on the agent remembering.</li>
+          <li><strong>Turn checks into code.</strong> Assert that segment rates bracket the total, that the latest day is complete and that two sources reconcile. A failing assertion is harder to ignore than a paragraph.</li>
+          <li><strong>Make it read everything.</strong> The rule ended up literal: read the whole lessons file, never just the top. Keep the file short enough that this is cheap.</li>
+          <li><strong>Add a sceptical reviewer pass.</strong> Asking the agent to review its own draft "as a sceptical payments expert" found a surprising number of its own wrong attributions. On one batch of monthly reports it led to seven corrections before anything went out.</li>
+          <li><strong>Keep a human "does this make sense?" gate</strong> for anything external. No rule file substitutes for someone who knows roughly what the answer should be.</li>
+        </ul>
+
+        <h2>The bigger point</h2>
+        <p>Lessons files are memory, not judgement. They make a capable agent consistent on known ground, and that is valuable. But the work that matters most in analytics happens on unknown ground, and there the safety net is still structural: defaults, assertions, independent sources and a person with context.</p>
+
+        <blockquote class="callout">Lessons stop the same mistake happening twice. They don't stop the next new one.</blockquote>

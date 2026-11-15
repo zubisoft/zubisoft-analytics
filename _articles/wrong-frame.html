@@ -1,0 +1,27 @@
+        <p class="lead">When I counted how many messages each wrong answer took to fix, I expected the hardest analyses to take longest. They didn't. What mattered was whether my first follow-up question attacked the frame or worked inside it.</p>
+
+        <p>At the bottom of the chart are the cheap ones. The "80–90% recovered" claim died to a single word, "Evidence?". The breakdown where two card brands were both below the total died to a single sentence of arithmetic. At the top are the expensive ones: a quarterly review that blamed the wrong provider took 13 messages, and a payment delay blamed on the merchant took 9 messages across two days.</p>
+
+        <h2>Anatomy of a long one: blaming the merchant</h2>
+        <p>A merchant's customers were getting duplicate deposits. The AI spent two days building a case that the merchant was checking payment status too late, and called it "the clearest evidence so far to send to the merchant". Every follow-up I asked, it answered inside that story, adding more detail and more confidence.</p>
+        <p>Then I asked a different kind of question: did this payment show up in <em>our own</em> notification tables, and when? The merchant checked status a fraction of a second after we notified them. Our notification was more than a minute late. It was us.</p>
+        <p>The same pattern appeared elsewhere. A card network's outage was blamed on our own gateway, because the gateway was what was in the data. Webhook errors were put down to "a timing issue on the merchant side" when we were sending webhooks we didn't filter. <strong>The AI explains with whatever is visible</strong>, so the visible party gets the blame.</p>
+
+        <h2>Anatomy of another: the quarterly review</h2>
+        <p>Preparing a partner's quarterly review, the AI pinned declines on the provider that handled the <em>retry</em>, not the one that originally declined. We caught it, and it wrote a lesson about attributing declines by attempt. Later in the same review it made the same mistake on a different decline code. A wrong frame is sticky. Once the agent has a story, each new answer gets reasoned inside it, and the corrections arrive one patch at a time.</p>
+
+        <h2>Questions that break a frame fast</h2>
+        <p>Looking back at the episodes that ended quickly, the winning questions shared one thing: they forced the agent outside its own story.</p>
+        <ul class="qlist">
+          <li><span>"Show me one raw record."</span> A single payment's actual request and response settles in minutes what totals can argue about for days.</li>
+          <li><span>"First attempt or final outcome?"</span> In any system with retries, the answer changes who gets blamed.</li>
+          <li><span>"What does our own side look like?"</span> Trace your logs before blaming a merchant, a provider or an issuer.</li>
+          <li><span>"Is this rate or mix?"</span> Did performance change, or did the traffic?</li>
+          <li><span>"All of them, or the best ones?"</span> Count the whole population before anything becomes "typical".</li>
+          <li><span>"If this were true, what else would be true?"</span> Real outages produce alerts and tickets. Real wins show up in revenue.</li>
+        </ul>
+
+        <h2>What this means for teams</h2>
+        <p>The cost of AI analytics is not the error rate. It is how long a wrong frame survives before someone with context challenges it. That suggests two practical moves. First, put the frame-breaking questions into the agent's own review step, so it asks them before you have to. Second, make sure the person reviewing the output knows the domain well enough to ask them. A reviewer who only checks the arithmetic will sign off on a beautifully argued wrong story.</p>
+
+        <blockquote class="callout">Ask the right question and a wrong answer dies in one message. Ask the wrong one and it lives for days.</blockquote>

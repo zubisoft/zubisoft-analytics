@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The outage that never happened · Zubisoft Analytics</title>
+  <meta name="description" content="My AI agent declared a major merchant “completely broken”. Every payment had gone through. One column name was lying.">
+  <meta property="og:title" content="The outage that never happened · Zubisoft Analytics">
+  <meta property="og:description" content="My AI agent declared a major merchant “completely broken”. Every payment had gone through. One column name was lying.">
+  <meta name="theme-color" content="#20283B">
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="../index.html" aria-label="Zubisoft Analytics home">
+        <svg class="brand__mark" viewBox="24 22 392 424" aria-hidden="true"><defs><clipPath id="zc"><rect x="24" y="22" width="392" height="424"/></clipPath></defs><g clip-path="url(#zc)"><rect class="z-a" x="24" y="22" width="392" height="54"/><polygon class="z-b" points="24,76 264.9,76 204.7,140 24,140"/><rect class="z-b" x="24" y="382" width="392" height="64"/><polygon class="z-a" points="222.8,324 416,324 416,382 168.2,382"/><polygon class="z-a" points="315.6,22 411.2,22 12.6,446 -82.9,446"/><polygon class="z-b" points="411.2,22 506.6,22 108.1,446 12.6,446"/></g></svg>
+        <span class="brand__name">zubisoft<span class="brand__sub">analytics</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#ai">AI on your data</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../insights/index.html" aria-current="page">Insights</a>
+        <a href="../index.html#about">About</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="sun" d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path class="moon" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+        <a class="btn btn--sm" href="../index.html#contact">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="article">
+      <header class="article__head wrap">
+        <p class="eyebrow"><a href="index.html">Field notes: AI in analytics</a> · Part 2 of 6</p>
+        <h1>The outage that never happened</h1>
+        <p class="article__dek">My AI agent declared a major merchant “completely broken”. Every payment had gone through. One column name was lying.</p>
+        <p class="article__meta">Alvaro Zubizarreta · <time datetime="2026-11-15">15 Nov 2026</time> · 3 min read</p>
+      </header>
+      <figure class="article__figure wrap">
+        <div class="chart-frame"><img src="img/03_fake_outage.jpg" alt="Two bars for one merchant’s card success rate over a weekend. The AI reported 0% and called it completely broken. A second data source showed about 91%, a normal weekend." width="1800" height="1000"></div>
+      </figure>
+      <div class="article__body wrap">
+        <p class="lead">It's a Monday in September and my AI analyst has just finished the weekend report. It is not a calm report. One of our biggest merchants is, quote, "completely broken". Zero percent of card payments are going through. It gives the money stranded to the penny, a running tally of what is being lost every hour, and adds that it is "still ongoing".</p>
+
+        <p>Four days later the same agent ran the weekly review. This time it reconciled against a second data source, and it noted, quietly, that every one of those payments had gone through. Success that weekend was about 91%, a completely normal weekend.</p>
+        <p>Nothing had broken. One column in the warehouse was wrong, and the AI had believed it with total confidence.</p>
+
+        <h2>What actually happened</h2>
+        <p>The agent computed success from a column whose name says exactly that: a success flag. For that merchant's card payments the flag was simply never set. The column didn't mean what its name said. A pre-aggregated reporting table, built a different way, had the truth all along.</p>
+        <p>It wasn't a one-off. Over the same two months, columns misled the agent again and again:</p>
+        <ul>
+          <li>A count of "events" per payment that only counted one kind of event, so payments with retries looked clean.</li>
+          <li>A "first successful payment" field that was written once and never updated, so a large block of customers had the wrong first success.</li>
+          <li>A newest day in the warehouse that was routinely half-loaded. That produced at least one dramatic portfolio-wide "collapse" overnight.</li>
+          <li>Card country derived from a lookup that was failing intermittently, which created a fake shift in where customers came from.</li>
+        </ul>
+
+        <h2>Why an AI falls for it and an analyst doesn't</h2>
+        <p>An agent reads a schema like documentation. An experienced analyst treats a column name as a rumour. Analysts have been burnt before. They know which tables lag, which flags are set by which system, and which fields quietly stopped updating last spring.</p>
+        <p>There is also a missing gut check. A real outage at a major merchant over a whole weekend would have produced support tickets, alerts and angry phone calls. A person would ask "did anyone call us?" before writing the report. The AI had no expectation of what the answer should look like, so the impossible looked as reportable as the ordinary.</p>
+
+        <h2>Four checks that would have caught it in minutes</h2>
+        <ol>
+          <li><strong>Reconcile against a second source</strong> before reporting any big move. If two tables disagree, the disagreement is the finding.</li>
+          <li><strong>Check freshness first.</strong> Look at the latest date and the per-day row counts, and drop a partial latest day before comparing anything.</li>
+          <li><strong>Define critical metrics in your own logic.</strong> Derive "success" from response codes in a shared snippet that every query uses, not from whichever convenience flag happens to exist.</li>
+          <li><strong>Ask what else would be true.</strong> If this were real, what would we also see: alerts, tickets, a drop in revenue? If none of it is there, suspect the data before the world.</li>
+        </ol>
+        <p>These became the first step of how we work: <a href="../index.html#method">is the data whole?</a> It comes before any segmenting, decomposing or storytelling.</p>
+
+        <blockquote class="callout">Confident, precise, urgent, and wrong. The most dangerous AI answer is the one that sounds like an incident report.</blockquote>
+
+        <aside class="data-note">
+          <strong>About the data.</strong> Based on 1,006 messages I typed across 124 sessions with an AI analytics agent (Claude Code connected to a payments data warehouse), 29 Sep – 13 Nov 2026. AI subagents classified every message and I spot-checked the labels. Corrections are a floor: only answers someone checked could be caught. Merchants, providers and business figures are anonymised.
+        </aside>
+        <nav class="pager" aria-label="More in this series"><a class="pager__item" href="one-in-six.html"><span>← Previous</span>One in six of my messages corrected the AI</a><a class="pager__item pager__item--next" href="confident-precise-wrong.html"><span>Next →</span>Five AI answers that didn’t survive one question</a></nav>
+      </div>
+    </article>
+  </main>
+
+  <section class="contact">
+    <div class="wrap contact__inner">
+      <h2>Thinking about AI on your own data?</h2>
+      <p>We'll show you the checks, defaults and review loop we run, and where your data needs fixing first.</p>
+      <div class="hero__cta">
+        <a class="btn btn--light" href="mailto:zubisoft@gmail.com?subject=AI%20analytics">zubisoft@gmail.com</a>
+        <a class="btn btn--ghost-light" href="https://www.linkedin.com/in/zubisoft/" target="_blank" rel="noopener">Message on LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <span>© <span id="year">2026</span> Zubisoft Analytics</span>
+      <span>Case details are anonymised. Numbers come from the author’s own AI-assisted work.</span>
+    </div>
+  </footer>
+  <script src="../app.js"></script>
+</body>
+</html>
