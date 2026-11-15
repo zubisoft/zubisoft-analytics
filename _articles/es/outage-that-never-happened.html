@@ -1,0 +1,29 @@
+        <p class="lead">Es un lunes de septiembre y mi analista de IA acaba de terminar el informe del fin de semana. No es un informe tranquilo. Uno de nuestros mayores comercios está, cito textualmente, «completamente roto». No sale adelante ni un solo pago con tarjeta: el cero por ciento. Da el dinero bloqueado al céntimo, un contador de lo que se pierde cada hora, y añade que el problema «sigue en curso».</p>
+
+        <p>Cuatro días después, el mismo agente hizo la revisión semanal. Esta vez contrastó los datos con una segunda fuente y señaló, sin darle importancia, que todos esos pagos se habían procesado. La tasa de éxito ese fin de semana rondó el 91 %: un fin de semana completamente normal.</p>
+        <p>No se había roto nada. Una columna del data warehouse estaba mal, y la IA se la había creído con total seguridad.</p>
+
+        <h2>Qué pasó en realidad</h2>
+        <p>El agente calculó el éxito a partir de una columna cuyo nombre dice exactamente eso: un flag de éxito. Para los pagos con tarjeta de ese comercio, el flag sencillamente nunca se rellenaba. La columna no significaba lo que decía su nombre. Una tabla de reporting preagregada, construida de otra forma, tenía la verdad desde el principio.</p>
+        <p>No fue un caso aislado. En esos mismos dos meses, las columnas engañaron al agente una y otra vez:</p>
+        <ul>
+          <li>Un recuento de «eventos» por pago que solo contaba un tipo de evento, así que los pagos con reintentos parecían limpios.</li>
+          <li>Un campo de «primer pago con éxito» que se escribía una vez y nunca se actualizaba, así que un bloque grande de clientes tenía mal su primer éxito.</li>
+          <li>Un último día en el data warehouse que solía estar cargado a medias. Eso provocó al menos un «desplome» espectacular de toda la cartera de la noche a la mañana.</li>
+          <li>El país de la tarjeta, sacado de un lookup que fallaba a ratos, lo que creó un falso cambio en la procedencia de los clientes.</li>
+        </ul>
+
+        <h2>Por qué una IA cae en la trampa y un analista no</h2>
+        <p>Un agente lee un esquema como si fuera documentación. Un analista con experiencia trata el nombre de una columna como un rumor. Los analistas ya se han quemado antes. Saben qué tablas van con retraso, qué sistema rellena cada flag y qué campos dejaron de actualizarse sin hacer ruido la primavera pasada.</p>
+        <p>También falta la comprobación de sentido común. Una caída real en un gran comercio durante todo un fin de semana habría generado tickets de soporte, alertas y llamadas furiosas. Una persona preguntaría «¿nos ha llamado alguien?» antes de escribir el informe. La IA no tenía ninguna expectativa de cómo debía ser la respuesta, así que lo imposible le pareció tan digno de informe como lo normal.</p>
+
+        <h2>Cuatro comprobaciones que lo habrían detectado en minutos</h2>
+        <ol>
+          <li><strong>Contrasta con una segunda fuente</strong> antes de informar de cualquier movimiento grande. Si dos tablas no coinciden, la discrepancia es el hallazgo.</li>
+          <li><strong>Comprueba primero que los datos están al día.</strong> Mira la última fecha y el número de filas por día, y descarta el último día si está incompleto antes de comparar nada.</li>
+          <li><strong>Define las métricas críticas con tu propia lógica.</strong> Deriva el «éxito» de los códigos de respuesta en un fragmento compartido que usen todas las consultas, no del flag de conveniencia que haya a mano.</li>
+          <li><strong>Pregúntate qué más sería cierto.</strong> Si esto fuera real, ¿qué más veríamos: alertas, tickets, una caída de ingresos? Si no aparece nada de eso, sospecha de los datos antes que del mundo.</li>
+        </ol>
+        <p>Estas comprobaciones se convirtieron en el primer paso de nuestra forma de trabajar: <a href="../index.html#method">¿están completos los datos?</a> Va antes de cualquier segmentación, descomposición o relato.</p>
+
+        <blockquote class="callout">Segura, precisa, urgente y equivocada. La respuesta de IA más peligrosa es la que suena a informe de incidencia.</blockquote>

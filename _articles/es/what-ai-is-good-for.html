@@ -1,0 +1,48 @@
+        <p class="lead">De las 85 sesiones de trabajo de mis registros (las de tres o más mensajes), 26 salieron bien sin una sola corrección. Las otras 59 necesitaron al menos una, y 11 necesitaron cinco o más. Suena demoledor. No lo es, en cuanto miras la otra columna del balance.</p>
+
+        <h2>Donde se ganó el sueldo</h2>
+        <p>Algunos de los mejores hallazgos de mi año vinieron de la IA. Casi ninguno salió de la pregunta que yo había hecho de verdad.</p>
+        <ul>
+          <li><strong>Una carga del data warehouse atascada.</strong> Mientras respondía a una pregunta de conversión, se dio cuenta de que «clientes nuevos» marcaba cero en toda la cartera durante tres días. Una carga se había quedado parada. Lo arreglamos durante el análisis y recuperamos las filas que faltaban.</li>
+          <li><strong>Dinero que nadie estaba facturando.</strong> Unas comprobaciones rutinarias de facturación sacaron a la luz un bloque grande de transacciones que nunca se habían facturado, además de filas de facturación duplicadas que luego se limpiaron.</li>
+          <li><strong>Una ruta de respaldo muerta.</strong> Una ruta de failover no aceptaba casi nada sin que nadie se diera cuenta: decenas de miles de intentos en un día y un par de docenas aprobados.</li>
+          <li><strong>Un ataque de card testing.</strong> La búsqueda de logs con IA de un compañero lo detectó, un ingeniero lo validó y el equipo de fraude del comercio actuó en consecuencia.</li>
+          <li><strong>Verificar a las personas.</strong> Un borrador escrito por una persona afirmaba que se salvaba «más del 20 %» de los pagos fallidos. La IA volvió a contar, la cifra real era más o menos la mitad, y se corrigió antes de publicarse.</li>
+        </ul>
+        <p>Todos tienen algo en común. Aparecieron mientras el agente hacía otra cosa, porque revisó cien cortes de los datos que yo nunca habría tenido tiempo de mirar. Ese es el superpoder: amplitud, velocidad y no aburrirse nunca.</p>
+
+        <h2>El reparto de trabajo que se sostiene</h2>
+        <div class="split">
+          <div>
+            <h3>Lo que aporta la IA</h3>
+            <ul>
+              <li>Amplitud: cada segmento, cada día, cada proveedor</li>
+              <li>Velocidad de la pregunta al primer borrador</li>
+              <li>Conciliación y comprobación incansables</li>
+              <li>Informes claros y estructurados</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Lo que aporta la persona</h3>
+            <ul>
+              <li>Definiciones: qué significa de verdad aquí «éxito» o «cliente nuevo»</li>
+              <li>Contexto e historia del negocio</li>
+              <li>Una idea aproximada de cuál debería ser la respuesta</li>
+              <li>La última palabra sobre todo lo que sale de casa</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Reglas de trabajo que usamos ahora</h2>
+        <ol>
+          <li><strong>Trata lo que diga la IA como orientativo.</strong> Valida cualquier cifra exacta antes de que llegue a un cliente, a un consejo de administración o a la prensa.</li>
+          <li><strong>Haz preguntas acotadas.</strong> Las preguntas acotadas vuelven con respuestas precisas. Las segmentaciones amplias, cruzando muchas dimensiones, añaden mucho ruido.</li>
+          <li><strong>Haz que etiquete sus afirmaciones.</strong> El prompt de un ingeniero marca cada afirmación como respaldada por una fuente o inferida, y eso agiliza mucho la revisión.</li>
+          <li><strong>Contrasta cada cifra con una segunda fuente</strong> antes de creértela.</li>
+          <li><strong>Mira un registro en bruto</strong> antes de creerte una historia.</li>
+          <li><strong>Que ningún «normalmente» salga de casa</strong> sin haberlos contado todos.</li>
+        </ol>
+
+        <p>Las 26 sesiones limpias no fueron suerte. Eran sobre todo preguntas acotadas y bien definidas sobre datos que los valores por defecto del agente ya cubrían. En las 59 más complicadas también estuvo el valor: el agente hizo el trabajo de campo y una persona puso el criterio.</p>
+
+        <blockquote class="callout">Las consultas son ya la parte fácil. Preguntarse «¿tiene esto sentido?» es el trabajo. Tú eres la batería de pruebas.</blockquote>

@@ -10,8 +10,63 @@
     if (parent) parent.appendChild(n);
     return n;
   }
-  const fmtPP = (v) => (Math.abs(v) < 0.05 ? "" : v > 0 ? "+" : "−") + Math.abs(v).toFixed(1) + " pp";
-  const fmtPct = (v) => v.toFixed(1) + "%";
+  /* ---------- Language ---------- */
+  const LANG = (document.documentElement.lang || "en").slice(0, 2) === "es" ? "es" : "en";
+  const ES = LANG === "es";
+  const NB = "\u00a0";
+  const num = (v, d = 1) => (ES ? v.toFixed(d).replace(".", ",") : v.toFixed(d));
+  const pctInt = (v) => Math.round(v) + (ES ? NB + "%" : "%");
+  const PP = ES ? NB + "p." + NB + "p." : " pp";
+  const PP_AXIS = ES ? NB + "p.p." : "pp";
+  const fmtPP = (v) => (Math.abs(v) < 0.05 ? "" : v > 0 ? "+" : "−") + num(Math.abs(v)) + PP;
+  const fmtPct = (v) => num(v) + (ES ? NB + "%" : "%");
+  const T = ES ? {
+    seg: [["Wallets", "Wallets"], ["Tarjeta recurrente", "Tarj. recur."], ["Clientes nuevos", "Nuevos"]],
+    steps: ["Tasa de aprobación, últimas 12 semanas", "Tasa de aprobación por segmento de cliente", "Qué movió la cifra global, semana 1 → semana 12"],
+    headline: "Global", headlineApproval: "Aprobación global", week: "Semana", wk: "sem ",
+    shareTitle: "Cuota de pagos por segmento", walletsShare: "Wallets", ofPayments: "de los pagos",
+    note0: (a, b) => `<b>${a} → ${b}</b> en doce semanas. Plana. La mayoría de los dashboards se quedan aquí, y la revisión mensual dice «estable».`,
+    note1: (d, a, b, r, s1, s2) => `La aprobación de tarjeta recurrente cayó <b>${d}</b>, del ${a} al ${b}. El tráfico de wallets, que aprueba en torno al ${r}, pasó del ${s1} al ${s2} de los pagos y tapó el agujero.`,
+    note2: (mix, rate, net, lost) => `El mix sumó <b>${mix}</b> y la tasa de tarjeta recurrente restó <b>${rate}</b>, para un neto de ${net} Bajo una línea plana, <b>unas ${lost} aprobaciones menos cada semana</b> de tus clientes más fieles.`,
+    bridge: [
+      ["Mix: más tráfico wallet", "Mix: más wallets", "Cambio por el desplazamiento del mix de tráfico, a las tasas de la semana 1"],
+      ["Tasa: tarjeta recurrente", "Tasa: tarj. recur.", "Cambio en igualdad de condiciones de la aprobación de tarjeta recurrente, con el mix de la semana 12"],
+      ["Tasa: wallets", "Tasa: wallets", "Cambio en igualdad de condiciones de la aprobación de wallets"],
+      ["Tasa: clientes nuevos", "Tasa: nuevos", "Cambio en igualdad de condiciones de la aprobación de clientes nuevos"],
+      ["Cambio neto", "Cambio neto", "Aprobación global, semana 12 frente a semana 1"],
+    ],
+    vFlat: "La cifra global está plana. Comprueba que los segmentos no se estén moviendo en direcciones opuestas por debajo.",
+    vPureMix: (x) => `<strong>Mix puro.</strong> La cifra global cayó ${x} aunque todos los segmentos se mantuvieron o mejoraron. Más clientes nuevos diluyeron la media, así que «arreglar el rendimiento» aquí sería perseguir un fantasma.`,
+    vFlattering: (x) => `<strong>Un mix engañoso.</strong> La cifra global subió ${x}, pero ningún segmento mejoró. No lo presentes como un logro.`,
+    vMostlyMix: (m, n) => `<strong>Sobre todo mix.</strong> ${m} de los ${n} vienen de quién llegó, no de cómo rindió.`,
+    vMostlyRate: (r, n) => `<strong>Sobre todo un cambio real de rendimiento.</strong> ${r} de los ${n} son movimiento de tasa en igualdad de condiciones, así que merece investigarse.`,
+    demoRows: [["Efecto mix", "Cambio solo por el mix de tráfico (tasas del periodo anterior, cuotas de este periodo)"], ["Efecto tasa", "Cambio en igualdad de condiciones de la tasa de aprobación de cada segmento"], ["Cambio neto", "Aprobación global, este periodo frente al anterior"]],
+    tableSeg: ["Clientes nuevos", "Clientes recurrentes"], total: "Total",
+    tableSum: (m, r, n) => `Efecto mix ${m} + efecto tasa ${r} = ${n}`,
+  } : {
+    seg: [["Wallets", "Wallets"], ["Returning card", "Ret. card"], ["New customers", "New"]],
+    steps: ["Approval rate, last 12 weeks", "Approval rate by customer segment", "What moved the headline, week 1 → week 12"],
+    headline: "Headline", headlineApproval: "Headline approval", week: "Week", wk: "wk ",
+    shareTitle: "Share of payments by segment", walletsShare: "Wallets", ofPayments: "of payments",
+    note0: (a, b) => `<b>${a} → ${b}</b> over twelve weeks. Flat. Most dashboards stop here, and the monthly review says "stable".`,
+    note1: (d, a, b, r, s1, s2) => `Returning-card approval fell <b>${d}</b>, from ${a} to ${b}. Wallet traffic, approving at ~${r}, grew from ${s1} to ${s2} of payments and filled the hole.`,
+    note2: (mix, rate, net, lost) => `Mix added <b>${mix}</b> and the returning-card rate took <b>${rate}</b>. Net: ${net}. Under a flat line, <b>~${lost} fewer approvals every week</b> from your most loyal customers.`,
+    bridge: [
+      ["Mix: more wallet traffic", "Mix: more wallets", "Change from the shift in traffic mix, at week-1 approval rates"],
+      ["Rate: returning card", "Rate: ret. card", "Like-for-like change in returning-card approval, at week-12 mix"],
+      ["Rate: wallets", "Rate: wallets", "Like-for-like change in wallet approval"],
+      ["Rate: new customers", "Rate: new", "Like-for-like change in new-customer approval"],
+      ["Net change", "Net change", "Headline approval, week 12 vs week 1"],
+    ],
+    vFlat: "The headline is flat. Check that the segments aren't moving in opposite directions underneath.",
+    vPureMix: (x) => `<strong>Pure mix.</strong> The headline fell ${x} although every segment held or improved. More new customers diluted the blend, so "fixing performance" here would be chasing a ghost.`,
+    vFlattering: (x) => `<strong>A flattering mix.</strong> The headline rose ${x}, but no segment improved. Don't report this as a win.`,
+    vMostlyMix: (m, n) => `<strong>Mostly mix.</strong> ${m} of the ${n} comes from who showed up, not from how they performed.`,
+    vMostlyRate: (r, n) => `<strong>Mostly a real performance change.</strong> ${r} of the ${n} is like-for-like rate movement, so this one is worth investigating.`,
+    demoRows: [["Mix effect", "Change from traffic mix alone (last period's rates, this period's shares)"], ["Rate effect", "Like-for-like change in each segment's approval rate"], ["Net change", "Headline approval, this period vs last"]],
+    tableSeg: ["New customers", "Returning customers"], total: "Total",
+    tableSum: (m, r, n) => `Mix effect ${m} + rate effect ${r} = ${n}`,
+  };
 
   /* ---------- Theme ---------- */
   const root = document.documentElement;
@@ -31,6 +86,9 @@
     store.set(next);
   });
   $("#year").textContent = new Date().getFullYear();
+  document.querySelectorAll("[data-set-lang]").forEach((a) => a.addEventListener("click", () => {
+    try { localStorage.setItem("zs-lang", a.dataset.setLang); } catch { /* ignore */ }
+  }));
 
   /* ---------- Tooltip ---------- */
   const tip = $("#tip");
@@ -70,18 +128,14 @@
     const lost = B.s[1] * VOLUME * (A.r[1] - B.r[1]) / 100;
     return { weeks, A, B, mix, rate, net: B.head - A.head, lost };
   })();
-  const SEG = [
-    { name: "Wallets", short: "Wallets", color: "var(--series-1)" },
-    { name: "Returning card", short: "Ret. card", color: "var(--series-2)" },
-    { name: "New customers", short: "New", color: "var(--series-3)" },
-  ];
-  const STEP_TITLES = ["Approval rate, last 12 weeks", "Approval rate by customer segment", "What moved the headline, week 1 → week 12"];
+  const SEG = ["var(--series-1)", "var(--series-2)", "var(--series-3)"].map((color, k) => ({ name: T.seg[k][0], short: T.seg[k][1], color }));
+  const STEP_TITLES = T.steps;
 
   function storyNote(step) {
     const { A, B, mix, rate, net, lost } = STORY;
-    if (step === 0) return `<b>${fmtPct(A.head)} → ${fmtPct(B.head)}</b> over twelve weeks. Flat. Most dashboards stop here, and the monthly review says "stable".`;
-    if (step === 1) return `Returning-card approval fell <b>${fmtPP(B.r[1] - A.r[1])}</b>, from ${fmtPct(A.r[1])} to ${fmtPct(B.r[1])}. Wallet traffic, approving at ~${A.r[0].toFixed(0)}%, grew from ${Math.round(A.s[0] * 100)}% to ${Math.round(B.s[0] * 100)}% of payments and filled the hole.`;
-    return `Mix added <b>${fmtPP(mix)}</b> and the returning-card rate took <b>${fmtPP(rate[1])}</b>. Net: ${fmtPP(net)}. Under a flat line, <b>~${(Math.round(lost / 50) * 50).toLocaleString("en-GB")} fewer approvals every week</b> from your most loyal customers.`;
+    if (step === 0) return T.note0(fmtPct(A.head), fmtPct(B.head));
+    if (step === 1) return T.note1(fmtPP(B.r[1] - A.r[1]), fmtPct(A.r[1]), fmtPct(B.r[1]), pctInt(A.r[0]), pctInt(A.s[0] * 100), pctInt(B.s[0] * 100));
+    return T.note2(fmtPP(mix), fmtPP(rate[1]), fmtPP(net), (Math.round(lost / 50) * 50).toLocaleString(ES ? "es-ES" : "en-GB"));
   }
 
   // Push overlapping end-labels apart (sorted by y, minimum gap in px).
@@ -116,9 +170,9 @@
 
       [76, 82, 88, 94, 100].forEach((g) => {
         el("line", { x1: m.l, x2: m.l + iw, y1: y(g), y2: y(g), style: "stroke: var(--grid)" }, svg);
-        text(m.l - 6, y(g) + 3.5, g + "%", { class: "axis", "text-anchor": "end" });
+        text(m.l - 6, y(g) + 3.5, pctInt(g), { class: "axis", "text-anchor": "end" });
       });
-      [0, 3, 7, 11].forEach((i) => text(x(i), m.t + ih + 15, "wk " + weeks[i].wk, { class: "axis", "text-anchor": i === 0 ? "start" : i === 11 ? "end" : "middle" }));
+      [0, 3, 7, 11].forEach((i) => text(x(i), m.t + ih + 15, T.wk + weeks[i].wk, { class: "axis", "text-anchor": i === 0 ? "start" : i === 11 ? "end" : "middle" }));
 
       const path = (vals) => vals.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
       const lines = [];
@@ -129,14 +183,14 @@
           labels.push({ y: y(weeks[11].r[k]), name: narrow ? sg.short : sg.name, val: weeks[11].r[k], color: sg.color, strong: k === 1 });
         });
         el("path", { d: path(weeks.map((w) => w.head)), style: "fill:none; stroke:var(--ink); stroke-width:1.5; stroke-dasharray:4 4; opacity:.55" }, svg);
-        labels.push({ y: y(weeks[11].head), name: "Headline", val: weeks[11].head, color: "var(--ink)", dashed: true });
+        labels.push({ y: y(weeks[11].head), name: T.headline, val: weeks[11].head, color: "var(--ink)", dashed: true });
         // drop marker on the hidden decline
         const a = y(weeks[0].r[1]), b = y(weeks[11].r[1]);
         el("line", { x1: x(11) + 6, x2: x(11) + 6, y1: a, y2: b, style: "stroke: var(--series-2); stroke-width: 1.5" }, svg);
         el("line", { x1: x(0), x2: x(11) + 6, y1: a, y2: a, style: "stroke: var(--series-2); stroke-width: 1; stroke-dasharray: 2 3; opacity:.7" }, svg);
       } else {
         lines.push(el("path", { d: path(weeks.map((w) => w.head)), style: "fill:none; stroke:var(--ink); stroke-width:2.6; stroke-linejoin:round; stroke-linecap:round" }, svg));
-        labels.push({ y: y(weeks[11].head), name: "Headline", val: weeks[11].head, color: "var(--ink)", strong: true });
+        labels.push({ y: y(weeks[11].head), name: T.headline, val: weeks[11].head, color: "var(--ink)", strong: true });
         [0, 11].forEach((i) => el("circle", { cx: x(i), cy: y(weeks[i].head), r: 4, style: "fill: var(--ink); stroke: var(--surface); stroke-width: 2" }, svg));
         text(x(0), y(weeks[0].head) - 10, fmtPct(weeks[0].head), { class: "val" });
       }
@@ -144,12 +198,12 @@
         const lx = x(11) + (showMix ? 14 : 10);
         el("rect", { x: lx, y: lb.y - 4, width: 8, height: lb.dashed ? 2 : 8, rx: 2, style: `fill:${lb.color}` }, svg);
         const t = text(lx + 12, lb.y + 4, `${lb.name} ${fmtPct(lb.val)}`, { class: lb.strong ? "lbl-strong" : "" });
-        if (narrow) t.textContent = `${lb.name} ${lb.val.toFixed(1)}`;
+        if (narrow) t.textContent = `${lb.name} ${num(lb.val)}`;
       });
 
       if (showMix) {
         const sy = m.t + ih + stripGap;
-        text(m.l, sy - 7, "Share of payments by segment", { class: "axis" });
+        text(m.l, sy - 7, T.shareTitle, { class: "axis" });
         const bw = iw / weeks.length;
         weeks.forEach((w, i) => {
           let acc = 0;
@@ -160,9 +214,9 @@
           });
         });
         // wallet share, first → last week (wallets sit on top of each stacked bar)
-        const share = `${Math.round(weeks[0].s[0] * 100)}% → ${Math.round(weeks[11].s[0] * 100)}%`;
-        text(m.l + iw + 8, sy + 12, narrow ? "Wallets" : `Wallets ${share}`, { class: "axis" });
-        text(m.l + iw + 8, sy + 26, narrow ? share : "of payments", { class: "axis" });
+        const share = `${pctInt(weeks[0].s[0] * 100)} → ${pctInt(weeks[11].s[0] * 100)}`;
+        text(m.l + iw + 8, sy + 12, narrow ? T.walletsShare : `${T.walletsShare} ${share}`, { class: "axis" });
+        text(m.l + iw + 8, sy + 26, narrow ? share : T.ofPayments, { class: "axis" });
       }
 
       if (animate && !reduceMotion) {
@@ -183,9 +237,9 @@
         const w = weeks[i];
         cross.setAttribute("x1", x(i)); cross.setAttribute("x2", x(i)); cross.style.opacity = 0.5;
         const rows = showMix
-          ? SEG.map((sg, k) => `<span class="swatch" style="background:${sg.color}"></span>${sg.name} <b>${fmtPct(w.r[k])}</b> · ${Math.round(w.s[k] * 100)}% of payments`).join("<br>") + `<br>Headline <b>${fmtPct(w.head)}</b>`
-          : `Headline approval <b>${fmtPct(w.head)}</b>`;
-        showTip(`<strong>Week ${w.wk}</strong><br>${rows}`, r.left + x(i), r.top + m.t);
+          ? SEG.map((sg, k) => `<span class="swatch" style="background:${sg.color}"></span>${sg.name} <b>${fmtPct(w.r[k])}</b> · ${pctInt(w.s[k] * 100)} ${T.ofPayments}`).join("<br>") + `<br>${T.headline} <b>${fmtPct(w.head)}</b>`
+          : `${T.headlineApproval} <b>${fmtPct(w.head)}</b>`;
+        showTip(`<strong>${T.week} ${w.wk}</strong><br>${rows}`, r.left + x(i), r.top + m.t);
       };
       const leave = () => { cross.style.opacity = 0; hideTip(); };
       hit.addEventListener("mousemove", move);
@@ -197,13 +251,9 @@
 
     // Step 2: bridge of the headline change (pp), bars about zero
     const { mix, rate, net } = STORY;
-    const rows = [
-      { k: narrow ? "Mix: more wallets" : "Mix: more wallet traffic", v: mix, c: "var(--accent-2)", d: "Change from the shift in traffic mix, at week-1 approval rates" },
-      { k: narrow ? "Rate: ret. card" : "Rate: returning card", v: rate[1], c: "var(--series-2)", d: "Like-for-like change in returning-card approval, at week-12 mix" },
-      { k: "Rate: wallets", v: rate[0], c: "var(--series-1)", d: "Like-for-like change in wallet approval" },
-      { k: narrow ? "Rate: new" : "Rate: new customers", v: rate[2], c: "var(--series-3)", d: "Like-for-like change in new-customer approval" },
-      { k: "Net change", v: net, c: "var(--ink)", d: "Headline approval, week 12 vs week 1" },
-    ];
+    const vals = [mix, rate[1], rate[0], rate[2], net];
+    const cols = ["var(--accent-2)", "var(--series-2)", "var(--series-1)", "var(--series-3)", "var(--ink)"];
+    const rows = T.bridge.map(([full, short, d], k) => ({ k: narrow ? short : full, v: vals[k], c: cols[k], d }));
     const labelW = narrow ? 112 : 160, pad = 62;
     const m = { t: 18, b: 26, l: labelW, r: 4 };
     const iw = W - m.l - m.r - 2 * pad, ih = H - m.t - m.b;
@@ -213,7 +263,7 @@
     const step2 = [0.5, 1, 2].find((s) => s * iw / (2 * ext) >= 40) || 2;
     for (let g = -Math.floor(ext / step2) * step2; g <= ext + 1e-9; g += step2) {
       el("line", { x1: x(g), x2: x(g), y1: m.t - 6, y2: H - m.b, style: `stroke:${Math.abs(g) < 1e-9 ? "var(--ink-2)" : "var(--grid)"}` }, svg);
-      text(x(g), H - 8, (g > 0 ? "+" : g < 0 ? "−" : "") + Math.abs(g) + "pp", { class: "axis", "text-anchor": "middle" });
+      text(x(g), H - 8, (g > 0 ? "+" : g < 0 ? "−" : "") + num(Math.abs(g), g % 1 ? 1 : 0) + PP_AXIS, { class: "axis", "text-anchor": "middle" });
     }
     el("line", { x1: 0, x2: W, y1: m.t + band * 4, y2: m.t + band * 4, style: "stroke: var(--line); stroke-dasharray: 2 4" }, svg);
     rows.forEach((r, k) => {
@@ -300,25 +350,18 @@
 
   function verdict(s) {
     const both = (cmp) => cmp(s.dNew) && cmp(s.dRep);
-    if (Math.abs(s.net) < 0.05) return "The headline is flat. Check that the segments aren't moving in opposite directions underneath.";
-    if (s.net < 0 && both((v) => v >= 0))
-      return `<strong>Pure mix.</strong> The headline fell ${Math.abs(s.net).toFixed(1)} pp although every segment held or improved. More new customers diluted the blend, so "fixing performance" here would be chasing a ghost.`;
-    if (s.net > 0 && both((v) => v <= 0))
-      return `<strong>A flattering mix.</strong> The headline rose ${s.net.toFixed(1)} pp, but no segment improved. Don't report this as a win.`;
-    if (Math.abs(s.mix) >= Math.abs(s.rate))
-      return `<strong>Mostly mix.</strong> ${fmtPP(s.mix)} of the ${fmtPP(s.net)} comes from who showed up, not from how they performed.`;
-    return `<strong>Mostly a real performance change.</strong> ${fmtPP(s.rate)} of the ${fmtPP(s.net)} is like-for-like rate movement, so this one is worth investigating.`;
+    if (Math.abs(s.net) < 0.05) return T.vFlat;
+    if (s.net < 0 && both((v) => v >= 0)) return T.vPureMix(num(Math.abs(s.net)) + PP);
+    if (s.net > 0 && both((v) => v <= 0)) return T.vFlattering(num(s.net) + PP);
+    if (Math.abs(s.mix) >= Math.abs(s.rate)) return T.vMostlyMix(fmtPP(s.mix), fmtPP(s.net));
+    return T.vMostlyRate(fmtPP(s.rate), fmtPP(s.net));
   }
 
   function drawBridge(s) {
     const host = $("#waterfall");
     host.innerHTML = "";
     const W = host.clientWidth, H = host.clientHeight;
-    const rows = [
-      { k: "Mix effect", v: s.mix, c: "var(--series-1)", d: "Change from traffic mix alone (last period's rates, this period's shares)" },
-      { k: "Rate effect", v: s.rate, c: "var(--series-2)", d: "Like-for-like change in each segment's approval rate" },
-      { k: "Net change", v: s.net, c: "var(--total)", d: "Headline approval, this period vs last" },
-    ];
+    const rows = [s.mix, s.rate, s.net].map((v, k) => ({ k: T.demoRows[k][0], v, c: ["var(--series-1)", "var(--series-2)", "var(--total)"][k], d: T.demoRows[k][1] }));
     const labelW = W < 420 ? 84 : 110;
     const pad = 62; // room for value labels beyond the longest bar
     const m = { t: 20, r: 4, b: 28, l: labelW };
@@ -334,7 +377,7 @@
     for (let g = -Math.floor(ext / step) * step; g <= ext; g += step) {
       el("line", { x1: x(g), x2: x(g), y1: m.t - 6, y2: H - m.b, style: `stroke: ${g === 0 ? "var(--ink-2)" : "var(--grid)"}; stroke-width: 1` }, svg);
       const t = el("text", { x: x(g), y: H - 8, "text-anchor": "middle", style: "fill: var(--muted); font: 500 10px var(--mono)" }, svg);
-      t.textContent = (g > 0 ? "+" : g < 0 ? "−" : "") + Math.abs(g) + "pp";
+      t.textContent = (g > 0 ? "+" : g < 0 ? "−" : "") + Math.abs(g) + PP_AXIS;
     }
     // divider before net
     el("line", { x1: 0, x2: W, y1: m.t + band * 2, y2: m.t + band * 2, style: "stroke: var(--line); stroke-dasharray: 2 4" }, svg);
@@ -363,17 +406,15 @@
 
   function renderDemo() {
     const s = compute();
-    $("#o-share").textContent = s.share + "%";
+    $("#o-share").textContent = pctInt(s.share);
     $("#o-new").textContent = fmtPP(s.dNew);
     $("#o-rep").textContent = fmtPP(s.dRep);
     $("#k-head").textContent = `${fmtPct(s.totA)} → ${fmtPct(s.totB)}`;
     $("#k-delta").textContent = fmtPP(s.net);
     $("#verdict").innerHTML = verdict(s);
-    $("#wf-table").innerHTML = [
-      ["New customers", 0], ["Returning customers", 1],
-    ].map(([n, i]) => `<tr><td>${n}</td><td>${Math.round(s.wA[i] * 100)}% → ${Math.round(s.wB[i] * 100)}%</td><td>${fmtPct(s.rA[i])} → ${fmtPct(s.rB[i])}</td></tr>`).join("")
-      + `<tr><td><strong>Total</strong></td><td>100%</td><td><strong>${fmtPct(s.totA)} → ${fmtPct(s.totB)}</strong></td></tr>`
-      + `<tr><td colspan="3">Mix effect ${fmtPP(s.mix)} + rate effect ${fmtPP(s.rate)} = ${fmtPP(s.net)}</td></tr>`;
+    $("#wf-table").innerHTML = [0, 1].map((i) => `<tr><td>${T.tableSeg[i]}</td><td>${pctInt(s.wA[i] * 100)} → ${pctInt(s.wB[i] * 100)}</td><td>${fmtPct(s.rA[i])} → ${fmtPct(s.rB[i])}</td></tr>`).join("")
+      + `<tr><td><strong>${T.total}</strong></td><td>${pctInt(100)}</td><td><strong>${fmtPct(s.totA)} → ${fmtPct(s.totB)}</strong></td></tr>`
+      + `<tr><td colspan="3">${T.tableSum(fmtPP(s.mix), fmtPP(s.rate), fmtPP(s.net))}</td></tr>`;
     drawBridge(s);
   }
   const hasDemo = !!(iShare && iNew && iRep);

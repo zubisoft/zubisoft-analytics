@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artículos · Zubisoft Analytics</title>
+  <meta name="description" content="Notas de campo sobre el uso de agentes de IA en trabajo real de analítica: qué falló, qué aprendimos y qué funciona.">
+  <meta property="og:title" content="Artículos · Zubisoft Analytics">
+  <meta property="og:description" content="Notas de campo sobre el uso de agentes de IA en trabajo real de analítica: qué falló, qué aprendimos y qué funciona.">
+  <meta name="theme-color" content="#20283B">
+  <link rel="alternate" hreflang="en" href="https://zubisoft-analytics.com/insights/" data-local="../../insights/index.html">
+  <link rel="alternate" hreflang="es" href="https://zubisoft-analytics.com/es/insights/" data-local="../../es/insights/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://zubisoft-analytics.com/insights/">
+  <script src="../../assets/lang.js"></script>
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="../../es/index.html" aria-label="Inicio de Zubisoft Analytics">
+        <svg class="brand__mark" viewBox="24 22 392 424" aria-hidden="true"><defs><clipPath id="zc"><rect x="24" y="22" width="392" height="424"/></clipPath></defs><g clip-path="url(#zc)"><rect class="z-a" x="24" y="22" width="392" height="54"/><polygon class="z-b" points="24,76 264.9,76 204.7,140 24,140"/><rect class="z-b" x="24" y="382" width="392" height="64"/><polygon class="z-a" points="222.8,324 416,324 416,382 168.2,382"/><polygon class="z-a" points="315.6,22 411.2,22 12.6,446 -82.9,446"/><polygon class="z-b" points="411.2,22 506.6,22 108.1,446 12.6,446"/></g></svg>
+        <span class="brand__name">zubisoft<span class="brand__sub">analytics</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="../../es/index.html#services">Qué hacemos</a>
+        <a href="../../es/index.html#engage">Cómo trabajamos</a>
+        <a href="../../es/index.html#work">Trabajo</a>
+        <a href="../../es/index.html#ai">IA</a>
+        <a href="../../es/insights/index.html" aria-current="page">Artículos</a>
+        <a href="../../es/index.html#about">Acerca de</a>
+      </nav>
+      <div class="nav__actions">
+        <div class="lang-switch" role="group" aria-label="Idioma"><a href="../../insights/index.html" hreflang="en" lang="en" data-set-lang="en">EN</a><span aria-current="true">ES</span></div>
+        <button class="theme-toggle" type="button" aria-label="Cambiar modo oscuro" title="Cambiar tema">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="sun" d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path class="moon" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+        <a class="btn btn--sm" href="../../es/index.html#contact">Hablemos</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section insights-hero">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Artículos</p>
+          <h1>Notas de campo: IA en analítica</h1>
+          <p class="section__lede">Durante dos meses hice casi toda mi analítica con un agente de IA y después leí, uno a uno, los 1.006 mensajes que le escribí. Estas seis notas cuentan qué falló, en qué fue brillante y qué hábitos mantienen honestas las respuestas.</p>
+        </header>
+        <div class="insights-grid">
+<a class="insight-card card" href="one-in-six.html">
+  <span class="insight-card__img"><img src="../../insights/img/01_one_in_six_messages.jpg" alt="" loading="lazy" width="1800" height="1000"></span>
+  <span class="insight-card__body">
+    <span class="insight-card__meta">Parte 1 de 6 · 3 min de lectura</span>
+    <h2 class="insight-card__title">Leí 1.006 de mis propios chats con IA. Uno de cada seis decía «eso está mal».</h2>
+    <span class="insight-card__dek">Todo el mundo habla de la fontanería de la analítica con IA. Los fallos que importan ocurren en otro sitio: en el razonamiento.</span>
+  </span>
+</a>
+<a class="insight-card card" href="outage-that-never-happened.html">
+  <span class="insight-card__img"><img src="../../insights/img/03_fake_outage.jpg" alt="" loading="lazy" width="1800" height="1000"></span>
+  <span class="insight-card__body">
+    <span class="insight-card__meta">Parte 2 de 6 · 3 min de lectura</span>
+    <h2 class="insight-card__title">La caída que nunca ocurrió</h2>
+    <span class="insight-card__dek">Mi agente de IA declaró «completamente roto» a un gran comercio. Todos los pagos se habían procesado. El nombre de una columna mentía.</span>
+  </span>
+</a>
+<a class="insight-card card" href="confident-precise-wrong.html">
+  <span class="insight-card__img"><img src="../../insights/img/02_claim_vs_reality.jpg" alt="" loading="lazy" width="1800" height="1000"></span>
+  <span class="insight-card__body">
+    <span class="insight-card__meta">Parte 3 de 6 · 4 min de lectura</span>
+    <h2 class="insight-card__title">Seguras, precisas… y equivocadas: cinco respuestas de IA que no sobrevivieron a una pregunta</h2>
+    <span class="insight-card__dek">Todas eran concretas, convincentes y estaban listas para salir. Todas cayeron ante una pregunta corta de alguien que conocía el negocio.</span>
+  </span>
+</a>
+<a class="insight-card card" href="wrong-frame.html">
+  <span class="insight-card__img"><img src="../../insights/img/05_messages_to_right_answer.jpg" alt="" loading="lazy" width="1800" height="1000"></span>
+  <span class="insight-card__body">
+    <span class="insight-card__meta">Parte 4 de 6 · 3 min de lectura</span>
+    <h2 class="insight-card__title">El error sale barato. El marco equivocado sale caro.</h2>
+    <span class="insight-card__dek">Algunas respuestas erróneas murieron en un mensaje. Otras sobrevivieron trece mensajes, o dos días. La diferencia estaba en la pregunta que hice.</span>
+  </span>
+</a>
+<a class="insight-card card" href="lessons-dont-stop-mistakes.html">
+  <span class="insight-card__img"><img src="../../insights/img/04_lessons_vs_correction_rate.jpg" alt="" loading="lazy" width="1800" height="1000"></span>
+  <span class="insight-card__body">
+    <span class="insight-card__meta">Parte 5 de 6 · 3 min de lectura</span>
+    <h2 class="insight-card__title">Le escribí 65 lecciones a mi IA. Los errores no pararon.</h2>
+    <span class="insight-card__dek">El uso creció 2,6× en cinco semanas. El porcentaje de mensajes que corregían a la IA no bajó. Aquí explico por qué y qué funciona mejor.</span>
+  </span>
+</a>
+<a class="insight-card card" href="what-ai-is-good-for.html">
+  <span class="insight-card__img"><img src="../../insights/img/06_corrections_per_session.jpg" alt="" loading="lazy" width="1800" height="1000"></span>
+  <span class="insight-card__body">
+    <span class="insight-card__meta">Parte 6 de 6 · 3 min de lectura</span>
+    <h2 class="insight-card__title">26 de 85: para qué sirve de verdad la analítica con IA</h2>
+    <span class="insight-card__dek">Solo un tercio de mis sesiones de trabajo salió bien a la primera. Aun así, nunca volvería atrás. Este es el reparto de trabajo que se sostiene.</span>
+  </span>
+</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="contact">
+    <div class="wrap contact__inner">
+      <h2>¿Piensas en usar IA sobre tus propios datos?</h2>
+      <p>Te enseñamos los controles, los valores por defecto y el circuito de revisión que usamos, y qué parte de tus datos conviene arreglar primero.</p>
+      <div class="hero__cta">
+        <a class="btn btn--light" href="mailto:zubisoft@gmail.com?subject=IA%20sobre%20mis%20datos">zubisoft@gmail.com</a>
+        <a class="btn btn--ghost-light" href="https://www.linkedin.com/in/zubisoft/" target="_blank" rel="noopener">Escríbenos por LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <span>© <span id="year">2026</span> Zubisoft Analytics</span>
+      <span>Los casos están anonimizados. Las cifras proceden del propio trabajo del autor con IA.</span>
+    </div>
+  </footer>
+  <script src="../../app.js"></script>
+</body>
+</html>

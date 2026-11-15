@@ -1,0 +1,32 @@
+        <p class="lead">Desde finales de septiembre hago casi toda mi analítica del día a día con un agente de IA conectado directamente a un data warehouse de pagos. Escribe el SQL, lo ejecuta, lee los resultados y redacta las conclusiones. Además, guarda las transcripciones. Así que hice algo un poco masoquista: volví atrás y me las leí todas.</p>
+
+        <p>En total: 124 sesiones, 1.006 mensajes escritos por mí y 4.370 acciones del agente, unas 1.500 de ellas consultas SQL. Clasifiqué cada uno de mis mensajes según lo que hacía: pedir algo nuevo, dirigir, enseñar, aprobar o decirle al agente que se equivocaba.</p>
+
+        <h2>La fontanería funciona</h2>
+        <p>Si este año has estado mínimamente cerca del contenido sobre datos, habrás oído hablar mucho de fontanería: servidores MCP, conectores, capas semánticas, agentes que hablan con agentes, «chatea con tu data warehouse en cinco minutos». Quiero ser justo con ella, porque ha cumplido. Conectar una IA a un data warehouse antes era un proyecto y ahora es cosa de una tarde. Mi agente hizo más de cuatro acciones por cada mensaje que le envié. Solo el 6,8 % de esas acciones dio error, y de la mayoría se recuperó solo. Las consultas se ejecutaban. Los joins encajaban.</p>
+        <p>Pero una conexión no te dice nada sobre si las respuestas son correctas. La demo siempre pregunta algo con una respuesta obvia, como «¿cuánto facturamos el mes pasado?». Nadie necesitaba ayuda con eso.</p>
+
+        <h2>El razonamiento, todavía no</h2>
+        <p>La mayoría de mis mensajes servían para dirigir el análisis. Hubo 572 preguntas de seguimiento y 154 peticiones nuevas: «ahora sepáralo por red de tarjetas», «ahora solo clientes nuevos». Así es trabajar con un analista.</p>
+        <p>Pero <strong>160 de mis mensajes, uno de cada seis, eran para corregirlo</strong>:</p>
+        <ul>
+          <li><strong>43 hallazgos erróneos:</strong> una conclusión, una cifra o un culpable equivocados.</li>
+          <li><strong>41 de alcance equivocado:</strong> una respuesta correcta a una pregunta que yo no había hecho. Pedía por comercio y recibía todos los comercios; preguntaba por tarjetas y recibía todos los tipos de pago.</li>
+          <li><strong>43 toques de atención sobre el proceso:</strong> me devolvía el trabajo («aquí tienes el SQL para que lo ejecutes») cuando tenía acceso desde el principio.</li>
+          <li><strong>33 correcciones de formato:</strong> pedía un CSV y recibía un libro de cálculo de cuatro pestañas con un formato precioso.</li>
+        </ul>
+        <p>Esta es la parte que debería preocupar a cualquiera que esté desplegando esto. De esas 160 correcciones, 84 tenían que ver con la conclusión o el alcance, y casi ninguna con SQL roto. Los fallos eran consultas correctas que respondían a la pregunta equivocada, o la pregunta correcta mal interpretada.</p>
+        <p>Es un tipo de fallo mucho más inquietante. Una consulta rota te devuelve un error. Una conclusión equivocada te cuela una diapositiva en la revisión trimestral.</p>
+
+        <h2>Las respuestas erróneas son idénticas a las correctas</h2>
+        <p>Las respuestas erróneas llegaban con la misma prosa segura y los mismos decimales precisos que las correctas. Nada en el resultado las delataba. Lo que las cazó fue una pregunta corta de alguien que conocía el negocio: «¿Pruebas?», «¿Qué?», «No consigo replicarlo». Tener mejores herramientas no tuvo nada que ver.</p>
+        <p>El resto de esta serie mira esos fallos de cerca: <a href="outage-that-never-happened.html">una caída falsa</a>, <a href="confident-precise-wrong.html">cinco afirmaciones muy seguras que se vinieron abajo</a>, <a href="wrong-frame.html">por qué algunos errores sobreviven días</a>, <a href="lessons-dont-stop-mistakes.html">por qué apuntar las lecciones no los frenó</a> y <a href="what-ai-is-good-for.html">en qué fue la IA realmente brillante</a>.</p>
+
+        <h2>Si tu equipo está adoptando analítica con IA</h2>
+        <ol>
+          <li><strong>Presupuesta la revisión, no solo la integración.</strong> El conector lleva un día. Dedica la semana siguiente a diseñar cómo se revisan las respuestas antes de que salgan de casa.</li>
+          <li><strong>Mide la tasa de corrección, no la tasa de éxito de las consultas.</strong> Pide a tus analistas que etiqueten sus correcciones durante dos semanas. Esa cifra te dice mucho más que «las consultas se ejecutaron».</li>
+          <li><strong>Mantén a un experto en el negocio en el circuito</strong> para todo lo que vaya a llegar a un cliente, a un consejo de administración o a una nota de prensa.</li>
+        </ol>
+
+        <blockquote class="callout">La fontanería está resuelta, o lo bastante resuelta. Lo que sale por la tubería es un analista brillante, incansable, muy junior y con una cara de póker perfecta.</blockquote>

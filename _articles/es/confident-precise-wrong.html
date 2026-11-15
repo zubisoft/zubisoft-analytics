@@ -1,0 +1,42 @@
+        <p class="lead">Cada una de estas respuestas era concreta, convincente y estaba a un paso de salir: en un artículo, en una revisión trimestral o en un arreglo de ingeniería. Todas cayeron ante una pregunta corta de alguien que conocía el negocio. Ninguna era un error de SQL. Cada una era una cuestión de criterio que un analista con experiencia resuelve sin pensar.</p>
+
+        <h2>1. «Normalmente recuperábamos el 80–90 %»</h2>
+        <p><strong>La afirmación.</strong> Estábamos redactando un artículo sobre qué pasa cuando cae un proveedor de pagos. La IA escribió una frase preciosa: cuando fallaba un solo proveedor, «normalmente recuperábamos el 80–90 % de los pagos afectados en cuestión de minutos». Quedaba bien para citar y compartir.</p>
+        <p><strong>La realidad.</strong> Había cogido las tres mejores caídas y las había presentado como lo normal. Tomándolas todas, la mayoría no recuperó nada y el total quedó por debajo del 2 %. Y no era «en cuestión de minutos»: el failover ocurre dentro de la misma petición de pago, en segundos.</p>
+        <p><strong>La pregunta que la tumbó:</strong> «¿Pruebas?»</p>
+        <p class="aside-note">Para ser justos, en esa misma etapa de trabajo la IA verificó un borrador escrito por una persona que afirmaba que se salvaba «más del 20 %» de los pagos fallidos. La cifra real era más o menos la mitad. Las personas también exageramos. La IA simplemente lo hace con una prosa impecable.</p>
+
+        <h2>2. 96 pagos afectados por un bug</h2>
+        <p><strong>La afirmación.</strong> La herramienta de búsqueda de logs con IA de un compañero informó de que un bug de 3-D Secure había afectado a 96 pagos, y se estaba sacando un arreglo de ingeniería a toda prisa.</p>
+        <p><strong>La realidad.</strong> Mi agente de datos volvió a contar, y un vistazo a la respuesta en bruto de la API lo confirmó: un pago en siete días.</p>
+        <p><strong>La pregunta que la tumbó:</strong> «Enséñame uno.»</p>
+
+        <h2>3. Un comercio al 0 % todo el fin de semana</h2>
+        <p><strong>La afirmación.</strong> Un gran comercio estaba «completamente roto»: no pasaba nada y se perdía dinero cada hora.</p>
+        <p><strong>La realidad.</strong> Una tasa de éxito de alrededor del 91 %, un fin de semana normal. Una columna de éxito estaba mal y la IA se fio de su nombre. <a href="outage-that-never-happened.html">Aquí está la historia completa.</a></p>
+        <p><strong>Qué lo detectó:</strong> contrastar con una segunda fuente de datos.</p>
+
+        <h2>4. Una diferencia entre proveedores inflada 2,4×</h2>
+        <p><strong>La afirmación.</strong> La mayoría de los pagos de un wallet fallaban en el proveedor A. Envíalos al proveedor B, decía, y ganarás un buen número de aprobaciones cada semana. Era muy convincente.</p>
+        <p><strong>La realidad.</strong> Esos pagos ya se reintentaban automáticamente en el proveedor B, y menos del 3 % salía adelante en el segundo intento. El agente estaba leyendo el resultado final en lugar del primer intento. Eso inflaba 2,4× la diferencia del proveedor A, y el «arreglo» era algo que ya estábamos haciendo.</p>
+        <p><strong>La pregunta que la tumbó:</strong> «No consigo replicarlo. ¿Estás usando el proveedor inicial?»</p>
+
+        <h2>5. Una decisión de enrutamiento que costaba 4,3 puntos de conversión</h2>
+        <p><strong>La afirmación.</strong> Enviar el tráfico de un comercio al proveedor B en lugar de al proveedor A costaba 4,3 p. p. de conversión.</p>
+        <p><strong>La realidad.</strong> El proveedor B recibía más tráfico de una red de tarjetas que aprueba menos en todas partes. En igualdad de condiciones, los dos proveedores estaban a 0,1 p. p., un empate técnico. Es efecto mix, no efecto tasa. <a href="../index.html#demo">Prueba la demo de mix frente a tasa en nuestra página de inicio</a> para ver lo fácil que es que pase.</p>
+        <p><strong>La pregunta que la tumbó:</strong> «¿Misma red de tarjetas?»</p>
+
+        <h2>Extra: dos cifras que no pueden ser ciertas a la vez</h2>
+        <p>La tasa de aceptación global de un comercio era del 91 %. La IA me pasó un desglose en el que Visa estaba por debajo del 91 % y Mastercard también. Mi respuesta: «si la aceptación es del 91 %, Visa y Mastercard no pueden estar las dos por debajo del 91 %». La suya: «Error mío». Un analista de primer año hace esa comprobación dormido. La IA se la saltó por completo: en el desglose se habían colado filas de otro tipo de petición.</p>
+
+        <h2>Las cinco trampas de fondo</h2>
+        <p>Si pones en fila todos los hallazgos erróneos, casi todos caen en un puñado de trampas:</p>
+        <ol>
+          <li><strong>El mejor caso se convierte en «normalmente».</strong> Cuenta toda la población antes de generalizar.</li>
+          <li><strong>Una historia verosímil sustituye a una comprobación.</strong> Mira un registro en bruto antes de explicar un mecanismo.</li>
+          <li><strong>Se cree el nombre de la columna.</strong> Lee cómo se construye un campo, no cómo se llama.</li>
+          <li><strong>El resultado final ocupa el lugar del primer intento.</strong> Atribuye cada rechazo al intento que lo devolvió.</li>
+          <li><strong>Se confunde mix con tasa.</strong> Compara en igualdad de condiciones, con volúmenes, antes de decir que algo ha mejorado o empeorado.</li>
+        </ol>
+
+        <blockquote class="callout">Ninguna necesitaba un modelo mejor. Cada una necesitaba una pregunta de alguien que supiera más o menos cuál debía ser la respuesta.</blockquote>

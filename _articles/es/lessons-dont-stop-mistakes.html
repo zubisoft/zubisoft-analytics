@@ -1,0 +1,26 @@
+        <p class="lead">Cada vez que mi analista de IA se equivocaba, le hacía escribir una lección: qué había fallado y la regla que lo evita la próxima vez. En noviembre, los archivos de lecciones tenían unas 65 reglas. Esperaba que la tasa de corrección bajara. No bajó.</p>
+
+        <p>En las cinco semanas completas, el uso creció 2,6×, de 109 mensajes por semana a 284. El porcentaje de esos mensajes que corregían a la IA fue del 14 %, 11 %, 14 %, 19 % y 18 %. Plano en el mejor de los casos, y más alto en las dos semanas de más actividad.</p>
+        <p>Hay un matiz importante. Las preguntas se volvieron más difíciles en esas mismas semanas, con revisiones trimestrales de partners, incidencias en curso y afirmaciones para marketing. Así que esto no mide de forma limpia si la IA mejoró. Pero sí es una señal clara de que apuntar lecciones no es, por sí solo, una curva de aprendizaje.</p>
+
+        <h2>Por qué las lecciones se estancan</h2>
+        <ol>
+          <li><strong>Las lecciones evitan repeticiones, no errores nuevos.</strong> Las trampas conocidas dejaron de repetirse. Pero cada nuevo tipo de pregunta se topaba con trampas que nadie había apuntado todavía, y las preguntas más difíciles tienen más.</li>
+          <li><strong>Las lecciones se leen en diagonal.</strong> Dos veces, el agente abrió el archivo de lecciones, leyó solo las primeras 50 líneas y se saltó justo la regla que estaba a punto de incumplir. Una regla de formato se le pasó tres veces.</li>
+          <li><strong>En el momento, el consejo pierde.</strong> En una revisión, registró una lección para atribuir los rechazos por intento y, más adelante en la misma revisión, repitió el error original con otro código de rechazo.</li>
+          <li><strong>Las revisiones ayudan, pero no demuestran nada.</strong> Una pasada de revisión escéptica cazó mucho. Aun así, una atribución errónea sobrevivió a dos rondas de revisión.</li>
+        </ol>
+
+        <h2>Qué funcionó mejor que la prosa</h2>
+        <ul>
+          <li><strong>Convierte las lecciones en valores por defecto.</strong> «No te fíes del flag de éxito» es un consejo. Una definición compartida de éxito de la que parten todas las consultas es un valor por defecto. Los valores por defecto no dependen de que el agente se acuerde.</li>
+          <li><strong>Convierte las comprobaciones en código.</strong> Añade aserciones: que el total quede dentro del rango de las tasas por segmento, que el último día esté completo y que dos fuentes cuadren. Una aserción que falla es más difícil de ignorar que un párrafo.</li>
+          <li><strong>Oblígale a leerlo todo.</strong> La regla acabó siendo literal: lee el archivo de lecciones entero, nunca solo el principio. Mantén el archivo lo bastante corto como para que eso salga barato.</li>
+          <li><strong>Añade una pasada de revisión escéptica.</strong> Pedirle al agente que revisara su propio borrador «como un experto en pagos escéptico» destapó un número sorprendente de sus propias atribuciones erróneas. En una tanda de informes mensuales, eso llevó a siete correcciones antes de que saliera nada.</li>
+          <li><strong>Mantén un filtro humano de «¿tiene esto sentido?»</strong> para todo lo que sea externo. Ningún archivo de reglas sustituye a alguien que sepa más o menos cuál debería ser la respuesta.</li>
+        </ul>
+
+        <h2>La idea de fondo</h2>
+        <p>Los archivos de lecciones son memoria, no criterio. Hacen que un agente capaz sea consistente en terreno conocido, y eso tiene valor. Pero el trabajo que más importa en analítica ocurre en terreno desconocido, y ahí la red de seguridad sigue siendo estructural: valores por defecto, aserciones, fuentes independientes y una persona con contexto.</p>
+
+        <blockquote class="callout">Las lecciones evitan que el mismo error ocurra dos veces. No evitan el siguiente error nuevo.</blockquote>

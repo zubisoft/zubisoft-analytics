@@ -1,0 +1,27 @@
+        <p class="lead">Cuando conté cuántos mensajes hizo falta para corregir cada respuesta errónea, esperaba que los análisis más difíciles fueran los más largos. No fue así. Lo que importaba era si mi primera pregunta de seguimiento atacaba el marco o trabajaba dentro de él.</p>
+
+        <p>En la parte baja del gráfico están los baratos. La afirmación del «80–90 % recuperado» murió con una sola palabra: «¿Pruebas?». El desglose en el que dos marcas de tarjeta estaban las dos por debajo del total murió con una sola frase de aritmética. Arriba están los caros: una revisión trimestral que culpaba al proveedor equivocado necesitó 13 mensajes, y un retraso en pagos atribuido al comercio necesitó 9 mensajes a lo largo de dos días.</p>
+
+        <h2>Anatomía de uno largo: culpar al comercio</h2>
+        <p>Los clientes de un comercio recibían depósitos duplicados. La IA pasó dos días construyendo la tesis de que el comercio consultaba el estado del pago demasiado tarde, y la llamó «la prueba más clara hasta ahora para enviar al comercio». A cada pregunta de seguimiento que le hacía, respondía dentro de esa historia, con más detalle y más seguridad.</p>
+        <p>Entonces hice otro tipo de pregunta: ¿aparecía este pago en <em>nuestras propias</em> tablas de notificaciones, y cuándo? El comercio consultaba el estado una fracción de segundo después de que le notificáramos. Nuestra notificación llegaba con más de un minuto de retraso. Éramos nosotros.</p>
+        <p>El mismo patrón apareció en otros sitios. La caída de una red de tarjetas se atribuyó a nuestra propia pasarela, porque la pasarela era lo que aparecía en los datos. Los errores de webhook se achacaron a «un problema de tiempos del lado del comercio» cuando éramos nosotros los que enviábamos webhooks sin filtrar. <strong>La IA explica con lo que tiene a la vista</strong>, así que la culpa se la lleva quien está a la vista.</p>
+
+        <h2>Anatomía de otro: la revisión trimestral</h2>
+        <p>Preparando la revisión trimestral de un partner, la IA atribuyó los rechazos al proveedor que gestionó el <em>reintento</em>, no al que rechazó originalmente. Lo detectamos y escribió una lección sobre atribuir los rechazos por intento. Más adelante, en la misma revisión, cometió el mismo error con otro código de rechazo. Un marco equivocado es pegajoso. En cuanto el agente tiene una historia, razona cada nueva respuesta dentro de ella, y las correcciones llegan de parche en parche.</p>
+
+        <h2>Preguntas que rompen un marco enseguida</h2>
+        <p>Mirando atrás, en los episodios que se cerraron rápido las preguntas ganadoras tenían algo en común: obligaban al agente a salir de su propia historia.</p>
+        <ul class="qlist">
+          <li><span>«Enséñame un registro en bruto.»</span> La petición y la respuesta reales de un solo pago zanjan en minutos lo que los totales pueden discutir durante días.</li>
+          <li><span>«¿Primer intento o resultado final?»</span> En cualquier sistema con reintentos, la respuesta cambia a quién se culpa.</li>
+          <li><span>«¿Qué pasa en nuestro lado?»</span> Revisa tus logs antes de culpar a un comercio, a un proveedor o a un emisor.</li>
+          <li><span>«¿Es tasa o mix?»</span> ¿Ha cambiado el rendimiento o ha cambiado el tráfico?</li>
+          <li><span>«¿Todos, o solo los mejores?»</span> Cuenta toda la población antes de que nada pase a ser «lo normal».</li>
+          <li><span>«Si esto fuera cierto, ¿qué más sería cierto?»</span> Las caídas reales generan alertas y tickets. Las mejoras reales se notan en los ingresos.</li>
+        </ul>
+
+        <h2>Qué significa esto para los equipos</h2>
+        <p>El coste de la analítica con IA no es la tasa de error. Es cuánto tiempo sobrevive un marco equivocado antes de que alguien con contexto lo cuestione. De ahí salen dos medidas prácticas. Primero, mete las preguntas que rompen marcos en el propio paso de revisión del agente, para que se las haga antes de que tengas que hacerlo tú. Segundo, asegúrate de que quien revisa el resultado conoce el negocio lo bastante bien como para hacerlas. Un revisor que solo comprueba la aritmética dará por buena una historia equivocada pero magníficamente argumentada.</p>
+
+        <blockquote class="callout">Haz la pregunta correcta y una respuesta errónea muere en un mensaje. Haz la equivocada y vive durante días.</blockquote>

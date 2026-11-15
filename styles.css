@@ -382,3 +382,9 @@ input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 
 }
 
 .engage__item .case__tag { margin-bottom: 10px; }
+
+/* language switcher */
+.lang-switch { display: inline-flex; align-items: center; height: 38px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; font: 600 .74rem/1 var(--mono); letter-spacing: .06em; }
+.lang-switch > * { display: grid; place-items: center; min-width: 32px; height: 100%; padding: 0 8px; border-radius: 999px; text-decoration: none; color: var(--muted); }
+.lang-switch > [aria-current="true"] { background: var(--ink); color: var(--bg); }
+.lang-switch a:hover { color: var(--ink); }

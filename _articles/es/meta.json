@@ -1,0 +1,38 @@
+{
+  "one-in-six": {
+    "title": "Leí 1.006 de mis propios chats con IA. Uno de cada seis decía «eso está mal».",
+    "short": "Uno de cada seis mensajes míos corregía a la IA",
+    "dek": "Todo el mundo habla de la fontanería de la analítica con IA. Los fallos que importan ocurren en otro sitio: en el razonamiento.",
+    "alt": "Gráfico de barras de 1.006 mensajes escritos a un analista de IA, por tipo: 572 preguntas de seguimiento, 154 peticiones nuevas, 62 otros, 43 toques de atención sobre el proceso, 43 hallazgos erróneos, 41 de alcance equivocado, 33 de formato o estilo, 30 explicaciones del negocio, 28 aprobaciones. Los cuatro tipos de corrección suman 160, el 16 %."
+  },
+  "outage-that-never-happened": {
+    "title": "La caída que nunca ocurrió",
+    "short": "La caída que nunca ocurrió",
+    "dek": "Mi agente de IA declaró «completamente roto» a un gran comercio. Todos los pagos se habían procesado. El nombre de una columna mentía.",
+    "alt": "Dos barras con la tasa de éxito de los pagos con tarjeta de un comercio durante un fin de semana. La IA informó de un 0 % y lo dio por completamente roto. Una segunda fuente de datos mostraba alrededor del 91 %, un fin de semana normal."
+  },
+  "confident-precise-wrong": {
+    "title": "Seguras, precisas… y equivocadas: cinco respuestas de IA que no sobrevivieron a una pregunta",
+    "short": "Cinco respuestas de IA que no sobrevivieron a una pregunta",
+    "dek": "Todas eran concretas, convincentes y estaban listas para salir. Todas cayeron ante una pregunta corta de alguien que conocía el negocio.",
+    "alt": "Cinco pares de barras, afirmación de la IA frente a realidad. Pagos rescatados por failover: normalmente del 80 al 90 % según la IA, menos del 2 % en realidad. Pagos afectados por un bug: 96 según la IA, 1 en realidad. Tasa de éxito de un comercio en fin de semana: 0 % según la IA, alrededor del 91 % en realidad. Diferencia entre dos proveedores: 2,4 veces según la IA, 1 vez en realidad. Diferencia de conversión por una decisión de enrutamiento: 4,3 p. p. según la IA, 0,1 p. p. en igualdad de condiciones."
+  },
+  "wrong-frame": {
+    "title": "El error sale barato. El marco equivocado sale caro.",
+    "short": "Lo caro es el marco equivocado",
+    "dek": "Algunas respuestas erróneas murieron en un mensaje. Otras sobrevivieron trece mensajes, o dos días. La diferencia estaba en la pregunta que hice.",
+    "alt": "Barras horizontales con los mensajes necesarios para llegar a la respuesta correcta, por episodio: revisión trimestral que culpaba al proveedor equivocado, 13; retraso en pagos atribuido al comercio, 9; modelo mental equivocado sobre los tokens de tarjeta, 8; totales de control de fraude que no cuadraban, 8; reintentos contados como aprobaciones, 6; tokens de red que no cambiaban nada, 4; un cambio de ruta que no cambiaría nada, 3; perfil de un comercio hecho con el 4 % de su tráfico, 3; borrador de artículo con un 80–90 % recuperado, 1; dos marcas de tarjeta ambas por debajo del total, 1."
+  },
+  "lessons-dont-stop-mistakes": {
+    "title": "Le escribí 65 lecciones a mi IA. Los errores no pararon.",
+    "short": "65 lecciones después, los errores no pararon",
+    "dek": "El uso creció 2,6× en cinco semanas. El porcentaje de mensajes que corregían a la IA no bajó. Aquí explico por qué y qué funciona mejor.",
+    "alt": "Dos gráficos apilados por semana, del 12 oct al 9 nov 2026. Los mensajes por semana subieron de 109 a 141, 182, 280 y 284. El porcentaje de mensajes que corregían a la IA fue del 14 %, 11 %, 14 %, 19 % y 18 %, mientras los archivos de lecciones crecían hasta unas 65 reglas."
+  },
+  "what-ai-is-good-for": {
+    "title": "26 de 85: para qué sirve de verdad la analítica con IA",
+    "short": "Para qué sirve de verdad la analítica con IA",
+    "dek": "Solo un tercio de mis sesiones de trabajo salió bien a la primera. Aun así, nunca volvería atrás. Este es el reparto de trabajo que se sostiene.",
+    "alt": "Gráfico de barras de 85 sesiones de trabajo según las correcciones necesarias: 26 no necesitaron ninguna, 23 necesitaron una, 15 necesitaron dos, 7 necesitaron tres, 3 necesitaron cuatro y 11 necesitaron cinco o más."
+  }
+}
