@@ -1,6 +1,6 @@
 /* Pick the page language before anything renders.
  * Order: an explicit choice (?lang=en|es, or the EN/ES switcher, remembered in
- * localStorage) → the browser's preferred languages → a Spanish-speaking time zone.
+ * localStorage) → a Spanish-speaking time zone (where the visitor is) → the browser's languages.
  * Each page lists its counterparts as <link rel="alternate" hreflang data-local>,
  * so this works on the live site and when the files are opened locally.
  * Crawlers and link-preview bots are never redirected, so each language is indexed as published. */
@@ -25,13 +25,14 @@
   } catch (e) { /* storage blocked: fall through to detection */ }
 
   if (want !== "en" && want !== "es") {
+    want = null;
+    // Where the visitor is: a Spanish-speaking time zone gets Spanish, whatever the browser's language.
+    try { if (SPANISH_TZ.test(Intl.DateTimeFormat().resolvedOptions().timeZone || "")) want = "es"; } catch (e) { /* no Intl */ }
+    // Otherwise the browser's first preference between English and Spanish.
     var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
     for (var j = 0; j < prefs.length && !want; j++) {
       var code = String(prefs[j]).slice(0, 2).toLowerCase();
       if (code === "es" || code === "en") want = code;
-    }
-    if (!want) {
-      try { if (SPANISH_TZ.test(Intl.DateTimeFormat().resolvedOptions().timeZone || "")) want = "es"; } catch (e) { /* no Intl */ }
     }
   }
 

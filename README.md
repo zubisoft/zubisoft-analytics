@@ -36,8 +36,8 @@ Every page exists in English and Spanish and lists its counterpart with `<link r
 `assets/lang.js` runs first and picks the language in this order:
 
 1. An explicit choice: `?lang=en` or `?lang=es` in the URL, or the EN/ES switcher (remembered in localStorage).
-2. The browser's preferred languages.
-3. A Spanish-speaking time zone (Spain, Canaries, Latin America) when the browser prefers neither language.
+2. Where the visitor is: a Spanish-speaking time zone (Spain, Canaries, Latin America) gets Spanish.
+3. Otherwise, the browser's first preference between English and Spanish.
 
 Crawlers and link-preview bots are never redirected, so search engines index both versions.
 When you change copy on the homepage, change it in both `index.html` and `es/index.html`. Chart and demo strings live in the `T` dictionary in `app.js`.
