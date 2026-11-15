@@ -101,9 +101,10 @@ def head(title, desc, prefix):
         <span class="brand__name">zubisoft<span class="brand__sub">analytics</span></span>
       </a>
       <nav class="nav__links" aria-label="Primary">
-        <a href="{prefix}index.html#services">Services</a>
-        <a href="{prefix}index.html#ai">AI on your data</a>
+        <a href="{prefix}index.html#services">What we do</a>
+        <a href="{prefix}index.html#engage">How we work</a>
         <a href="{prefix}index.html#work">Work</a>
+        <a href="{prefix}index.html#ai">AI</a>
         <a href="{prefix}insights/index.html" aria-current="page">Insights</a>
         <a href="{prefix}index.html#about">About</a>
       </nav>
